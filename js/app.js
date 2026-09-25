@@ -6,6 +6,29 @@
   'use strict';
 
   let DATA = null;
+
+  function loc(obj, field) {
+    if (!obj) return '';
+    if (I18N.lang === 'fa' && obj[field + 'Fa']) return obj[field + 'Fa'];
+    return obj[field] || obj[field + 'Fa'] || '';
+  }
+
+  function freqName(f) {
+    return (I18N.lang === 'fa' && f.nameFa) ? f.nameFa : f.name;
+  }
+
+  function evidenceLabel(level) {
+    if (!DATA || !DATA.evidenceLevels[level]) return level;
+    var e = DATA.evidenceLevels[level];
+    return (I18N.lang === 'fa' && e.labelFa) ? e.labelFa : e.label;
+  }
+
+  function evidenceDesc(level) {
+    if (!DATA || !DATA.evidenceLevels[level]) return '';
+    var e = DATA.evidenceLevels[level];
+    return (I18N.lang === 'fa' && e.descriptionFa) ? e.descriptionFa : e.description;
+  }
+
   const engine = new AudioEngine();
   const visualizer = new WaveVisualizer('wave-canvas');
   visualizer.setEngine(engine);
@@ -80,9 +103,9 @@
     document.getElementById('lang-label').textContent = next === 'fa' ? 'EN' : 'FA';
     renderPresets();
     renderFreqGrid();
-    if (document.getElementById('view-detail').classList.contains('active')) {
-      // re-render detail if open would need stored id — skip for simplicity
-    }
+    renderEvidenceLegend();
+    // re-apply select option texts
+    I18N.apply();
   });
   // Init lang
   I18N.setLang(I18N.lang);
@@ -99,8 +122,8 @@
       if (cat !== 'all' && f.category !== cat) return false;
       if (ev !== 'all' && f.evidenceLevel !== ev) return false;
       if (!q) return true;
-      var hay = [f.name, f.id, String(f.hz || ''), f.brainwaveBand || '', f.frequencyType || '',
-        f.intendedEffect || '', f.claimedEffect || '', (f.tags || []).join(' ')].join(' ').toLowerCase();
+      var hay = [f.name, f.nameFa || '', f.id, String(f.hz || ''), f.brainwaveBand || '', f.frequencyType || '', f.frequencyTypeFa || '',
+        f.intendedEffect || '', f.intendedEffectFa || '', f.claimedEffect || '', f.claimedEffectFa || '', (f.tags || []).join(' ')].join(' ').toLowerCase();
       return hay.indexOf(q) !== -1;
     });
     list.sort(function (a, b) {
@@ -129,13 +152,16 @@
     grid.innerHTML = list.map(function (f) {
       var accent = f.category === 'mystical' ? 'var(--accent-purple)' : 'var(--accent-cyan)';
       var ev = DATA.evidenceLevels[f.evidenceLevel] || {};
-      var hzLabel = f.hz != null ? f.hz + ' Hz' : (f.frequencyType || '—');
+      var typeLabel = (I18N.lang === 'fa' && f.frequencyTypeFa) ? f.frequencyTypeFa : (f.frequencyType || '');
+      var catLabel = f.category === 'scientific' ? I18N.get('cat_label_sci') : I18N.get('cat_label_mys');
+      var hzLabel = f.hz != null ? f.hz + ' Hz' : typeLabel || '—';
+      var evLab = evidenceLabel(f.evidenceLevel);
       return '<article class="freq-card" data-id="' + f.id + '" style="--card-accent:' + accent + '">' +
         '<div class="hz">' + hzLabel + '</div>' +
-        '<div class="name">' + escapeHtml(f.name) + '</div>' +
-        '<div class="meta">' + escapeHtml(f.frequencyType || '') + ' · ' + (f.category === 'scientific' ? 'Scientific' : 'Mystical') + '</div>' +
-        '<span class="evidence-badge" style="background:' + ev.color + '22;color:' + ev.color + ';border:1px solid ' + ev.color + '55">' + (ev.label || f.evidenceLevel) + '</span>' +
-        '<div class="tags">' + (f.tags || []).slice(0, 4).map(function (t) { return '<span class="tag">' + escapeHtml(t) + '</span>'; }).join('') + '</div>' +
+        '<div class="name">' + escapeHtml(freqName(f)) + '</div>' +
+        '<div class="meta">' + escapeHtml(typeLabel) + ' · ' + catLabel + '</div>' +
+        '<span class="evidence-badge" style="background:' + (ev.color||'#999') + '22;color:' + (ev.color||'#999') + ';border:1px solid ' + (ev.color||'#999') + '55">' + escapeHtml(evLab) + '</span>' +
+        '<div class="tags">' + (f.tags || []).slice(0, 4).map(function (tg) { return '<span class="tag">' + escapeHtml(tg) + '</span>'; }).join('') + '</div>' +
         '</article>';
     }).join('');
     grid.querySelectorAll('.freq-card').forEach(function (card) {
@@ -161,19 +187,19 @@
     content.innerHTML =
       '<div class="detail-info">' +
         '<div class="detail-hz" style="color:' + accent + '">' + (f.hz != null ? f.hz + ' Hz' : '—') + '</div>' +
-        '<h1>' + escapeHtml(f.name) + '</h1>' +
-        '<span class="evidence-badge" style="background:' + ev.color + '22;color:' + ev.color + ';border:1px solid ' + ev.color + '55">' + (ev.label || '') + '</span>' +
-        '<p style="margin-top:0.75rem;color:var(--text-muted);font-size:0.9rem">' + escapeHtml(ev.description || '') + '</p>' +
-        '<div class="detail-section"><h3>' + I18N.get('type_band') + '</h3><p>' + escapeHtml(f.frequencyType || '—') +
+        '<h1>' + escapeHtml(freqName(f)) + '</h1>' +
+        '<span class="evidence-badge" style="background:' + ev.color + '22;color:' + ev.color + ';border:1px solid ' + ev.color + '55">' + evidenceLabel(f.evidenceLevel) + '</span>' +
+        '<p style="margin-top:0.75rem;color:var(--text-muted);font-size:0.9rem">' + escapeHtml(evidenceDesc(f.evidenceLevel)) + '</p>' +
+        '<div class="detail-section"><h3>' + I18N.get('type_band') + '</h3><p>' + escapeHtml((I18N.lang==='fa' && f.frequencyTypeFa) ? f.frequencyTypeFa : (f.frequencyType||'—')) +
           (f.brainwaveBand ? ' · ' + escapeHtml(f.brainwaveBand) : '') + '</p></div>' +
-        (f.intendedEffect ? '<div class="detail-section"><h3>' + I18N.get('investigated') + '</h3><div class="science-box">' + escapeHtml(f.intendedEffect) + '</div></div>' : '') +
-        (f.claimedEffect ? '<div class="detail-section"><h3>' + I18N.get('spiritual_claim') + '</h3><div class="claim-box">⚠️ ' + escapeHtml(f.claimedEffect) +
+        (f.intendedEffect || f.intendedEffectFa ? '<div class="detail-section"><h3>' + I18N.get('investigated') + '</h3><div class="science-box">' + escapeHtml((I18N.lang==='fa' && f.intendedEffectFa) ? f.intendedEffectFa : (f.intendedEffect||'')) + '</div></div>' : '') +
+        (f.claimedEffect || f.claimedEffectFa ? '<div class="detail-section"><h3>' + I18N.get('spiritual_claim') + '</h3><div class="claim-box">⚠️ ' + escapeHtml((I18N.lang==='fa' && f.claimedEffectFa) ? f.claimedEffectFa : (f.claimedEffect||'')) +
           '<br><small style="opacity:0.8">' + I18N.get('claim_note') + '</small></div></div>' : '') +
-        '<div class="detail-section"><h3>' + I18N.get('human_ev') + '</h3><p>' + escapeHtml(f.humanEvidence || '—') + '</p></div>' +
+        '<div class="detail-section"><h3>' + I18N.get('human_ev') + '</h3><p>' + escapeHtml((I18N.lang==='fa' && f.humanEvidenceFa) ? f.humanEvidenceFa : (f.humanEvidence||'—')) + '</p></div>' +
         '<div class="detail-section"><h3>' + I18N.get('study_info') + '</h3><p><strong>Type:</strong> ' + escapeHtml(f.studyType || '—') +
           '<br><strong>Sample:</strong> ' + escapeHtml(String(f.sampleSize || '—')) +
-          '<br><strong>Results:</strong> ' + escapeHtml(f.results || '—') + '</p></div>' +
-        '<div class="detail-section"><h3>' + I18N.get('safety_label') + '</h3><p>' + escapeHtml(f.safetyNotes || '') + '</p></div>' +
+          '<br><strong>Results:</strong> ' + escapeHtml((I18N.lang==='fa' && f.resultsFa) ? f.resultsFa : (f.results||'—')) + '</p></div>' +
+        '<div class="detail-section"><h3>' + I18N.get('safety_label') + '</h3><p>' + escapeHtml((I18N.lang==='fa' && f.safetyNotesFa) ? f.safetyNotesFa : (f.safetyNotes||'')) + '</p></div>' +
         '<div class="detail-section"><h3>' + I18N.get('source_label') + '</h3><p>' + escapeHtml(f.source || '—') +
           (f.doi ? '<br>DOI: ' + escapeHtml(f.doi) : '') +
           (f.publicationYear ? '<br>Year: ' + f.publicationYear : '') + '</p></div>' +
@@ -479,7 +505,7 @@
     if (!box || !DATA) return;
     box.innerHTML = Object.keys(DATA.evidenceLevels).map(function (k) {
       var v = DATA.evidenceLevels[k];
-      return '<span class="evidence-badge" style="background:' + v.color + '22;color:' + v.color + ';border:1px solid ' + v.color + '55">' + v.label + '</span>';
+      var lab = (I18N.lang === 'fa' && v.labelFa) ? v.labelFa : v.label; return '<span class="evidence-badge" style="background:' + v.color + '22;color:' + v.color + ';border:1px solid ' + v.color + '55">' + lab + '</span>';
     }).join('');
   }
 

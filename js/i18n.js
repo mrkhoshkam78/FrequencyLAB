@@ -96,7 +96,20 @@ window.I18N = {
       safety_label: 'Safety',
       source_label: 'Source',
       type_band: 'Type & Band',
-      infinite: '∞'
+      infinite: '∞',
+      wave_sine: 'Sine',
+      wave_triangle: 'Triangle',
+      wave_square: 'Square',
+      wave_sawtooth: 'Sawtooth',
+      ev_strong: 'Strong Evidence',
+      ev_moderate: 'Moderate Evidence',
+      ev_limited: 'Limited Evidence',
+      ev_preliminary: 'Preliminary',
+      ev_insufficient: 'Insufficient Evidence',
+      ev_traditional: 'Traditional / Spiritual',
+      cat_label_sci: 'Scientific',
+      cat_label_mys: 'Mystical',
+
     },
     fa: {
       brand: 'آزمایشگاه فرکانس',
@@ -189,7 +202,20 @@ window.I18N = {
       safety_label: 'ایمنی',
       source_label: 'منبع',
       type_band: 'نوع و باند',
-      infinite: '∞'
+      infinite: '∞',
+      wave_sine: 'سینوسی (Sine)',
+      wave_triangle: 'مثلثی (Triangle)',
+      wave_square: 'مربعی (Square)',
+      wave_sawtooth: 'دندان‌اره‌ای (Sawtooth)',
+      ev_strong: 'شواهد قوی',
+      ev_moderate: 'شواهد متوسط',
+      ev_limited: 'شواهد محدود',
+      ev_preliminary: 'مقدماتی',
+      ev_insufficient: 'شواهد ناکافی',
+      ev_traditional: 'سنتی / معنوی',
+      cat_label_sci: 'علمی',
+      cat_label_mys: 'عرفانی',
+
     }
   },
 
