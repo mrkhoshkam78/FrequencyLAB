@@ -245,18 +245,28 @@ html[dir="rtl"] .section-title { font-family: var(--font-fa); }
   background: var(--glass); border: 1px solid var(--glass-border);
   border-radius: var(--radius); backdrop-filter: blur(16px);
 }
-.search-panel { padding: 1.25rem; margin-bottom: 1.75rem; }
-.search-row { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+.search-panel { padding: 0.75rem 1rem; margin-bottom: 1.25rem; }
+.search-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) repeat(3, minmax(0, 1fr));
+  gap: 0.5rem;
+  align-items: center;
+}
 .search-row input[type="search"],
 .search-row select,
 .control-group select {
-  font-family: inherit; font-size: 0.9rem; background: rgba(0,0,0,0.35);
-  border: 1px solid var(--glass-border); color: var(--text); border-radius: 10px;
-  padding: 0.65rem 1rem; outline: none; transition: border-color 0.2s;
+  font-family: inherit; font-size: 0.82rem; background: rgba(0,0,0,0.35);
+  border: 1px solid var(--glass-border); color: var(--text); border-radius: 8px;
+  padding: 0.45rem 0.7rem; outline: none; transition: border-color 0.2s;
+  width: 100%; min-width: 0; max-width: 100%;
 }
-.search-row input[type="search"] { flex: 1 1 200px; min-width: 160px; }
-.search-row select { flex: 0 1 auto; min-width: 130px; }
 .search-row input:focus, .control-group select:focus { border-color: var(--accent-cyan); }
+@media (max-width: 900px) {
+  .search-row { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 520px) {
+  .search-row { grid-template-columns: 1fr; }
+}
 
 /* Frequency Cards */
 .freq-grid {
@@ -433,7 +443,7 @@ html[dir="rtl"] .about-content h3 { font-family: var(--font-fa); }
   .mobile-nav.open { display: flex; }
   .hero { padding: 2rem 0 1.5rem; }
   .quick-stats { gap: 1.5rem; }
-  .search-row { flex-direction: column; }
+  .search-row { grid-template-columns: 1fr; }
   .search-row input, .search-row select { width: 100%; min-width: 0; }
   .view { padding: 1.5rem 1rem 3rem; }
   .recommendations { flex-direction: column; }
@@ -458,3 +468,34 @@ html[dir="rtl"] .logo { flex-direction: row; }
 html[dir="rtl"] .nav-btn { flex-direction: row; }
 html[dir="rtl"] .control-group label .val { float: left; }
 html[dir="rtl"] .float-end { float: left; }
+
+
+/* Ambient sound cards */
+.ambient-section { margin: 1.5rem 0; }
+.ambient-section h3 {
+  font-family: var(--font-display); font-size: 1rem; margin-bottom: 0.85rem;
+  color: var(--accent-cyan); letter-spacing: 0.03em;
+}
+html[dir="rtl"] .ambient-section h3 { font-family: var(--font-fa); }
+.ambient-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  gap: 0.75rem;
+}
+.ambient-card {
+  background: var(--glass); border: 1px solid var(--glass-border);
+  border-radius: 12px; padding: 1rem 0.75rem; text-align: center;
+  cursor: pointer; transition: all 0.25s ease;
+  display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+}
+.ambient-card svg { width: 32px; height: 32px; color: var(--accent-cyan); transition: 0.25s; }
+.ambient-card:hover {
+  border-color: var(--accent-cyan); transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0,212,255,0.12);
+}
+.ambient-card:hover svg { transform: scale(1.1); filter: drop-shadow(0 0 6px rgba(0,212,255,0.5)); }
+.ambient-card.active {
+  border-color: var(--accent-cyan); background: rgba(0,212,255,0.1);
+}
+.ambient-card span { font-size: 0.8rem; color: var(--text-muted); font-weight: 500; }
+.ambient-card:hover span, .ambient-card.active span { color: var(--text); }
