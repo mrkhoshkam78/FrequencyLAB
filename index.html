@@ -1,268 +1,285 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fa" dir="rtl">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <meta name="description" content="Frequency Lab — Interactive Frequency & Sound Research Platform. Explore scientific and spiritual frequencies with real-time Web Audio generation." />
-  <title>Frequency Lab — Interactive Frequency & Sound Research</title>
+  <meta name="description" content="Frequency Lab — پلتفرم تعاملی پژوهش فرکانس و صدا" />
+  <title>Frequency Lab — آزمایشگاه فرکانس</title>
   <link rel="stylesheet" href="css/styles.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700&family=Vazirmatn:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 </head>
 <body>
-  <!-- Animated Background -->
-  <div id="bg-canvas-wrap">
-    <canvas id="bg-canvas"></canvas>
-  </div>
+  <div id="bg-canvas-wrap"><canvas id="bg-canvas"></canvas></div>
   <div class="particles" id="particles"></div>
 
-  <!-- Header -->
+  <!-- SVG Icon Sprite -->
+  <svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+    <symbol id="icon-play" viewBox="0 0 24 24"><path fill="currentColor" d="M8 5v14l11-7z"/></symbol>
+    <symbol id="icon-stop" viewBox="0 0 24 24"><rect fill="currentColor" x="6" y="6" width="12" height="12" rx="1"/></symbol>
+    <symbol id="icon-pause" viewBox="0 0 24 24"><path fill="currentColor" d="M6 5h4v14H6zm8 0h4v14h-4z"/></symbol>
+    <symbol id="icon-home" viewBox="0 0 24 24"><path fill="currentColor" d="M12 3L4 9v12h5v-7h6v7h5V9z"/></symbol>
+    <symbol id="icon-search" viewBox="0 0 24 24"><path fill="currentColor" d="M15.5 14h-.79l-.28-.27A6.47 6.47 0 0016 9.5 6.5 6.5 0 109.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 5 1.5-1.5-5-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></symbol>
+    <symbol id="icon-wave" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" d="M2 12c2-4 4-4 6 0s4 4 6 0 4-4 6 0"/></symbol>
+    <symbol id="icon-brain" viewBox="0 0 24 24"><path fill="currentColor" d="M13 3c-1.1 0-2 .9-2 2 0 .4.1.8.3 1.1C9.9 6.5 9 7.6 9 9c0 .3 0 .6.1.9C7.9 10.2 7 11.5 7 13c0 1.7 1.1 3.1 2.7 3.6-.1.5-.5.9-.7 1.4-.4.9-.2 2 .5 2.7.7.7 1.8.9 2.7.5.6-.3 1-.7 1.2-1.3.3.1.6.1.9.1 1.1 0 2-.9 2-2 0-.3 0-.5-.1-.8.9-.4 1.6-1.2 1.9-2.2.5.1 1 .2 1.5.2 2.2 0 4-1.8 4-4 0-1.7-1.1-3.2-2.6-3.8.1-.4.1-.7.1-1.1C20.5 4.6 18.4 3 16 3c-1.1 0-2.1.4-2.9 1-.3-.6-.9-1-1.6-1z"/></symbol>
+    <symbol id="icon-moon" viewBox="0 0 24 24"><path fill="currentColor" d="M12 3a9 9 0 109 9c0-.5 0-1-.1-1.4A7 7 0 0112 3z"/></symbol>
+    <symbol id="icon-focus" viewBox="0 0 24 24"><circle fill="none" stroke="currentColor" stroke-width="2" cx="12" cy="12" r="3"/><path fill="none" stroke="currentColor" stroke-width="2" d="M12 2v3M12 19v3M2 12h3M19 12h3"/></symbol>
+    <symbol id="icon-relax" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" d="M4 14c2-3 4-3 6 0s4 3 6 0 4-3 6 0"/><circle fill="currentColor" cx="8" cy="8" r="1.5"/><circle fill="currentColor" cx="16" cy="8" r="1.5"/></symbol>
+    <symbol id="icon-spark" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2l1.5 6.5L20 10l-6.5 1.5L12 18l-1.5-6.5L4 10l6.5-1.5z"/></symbol>
+    <symbol id="icon-settings" viewBox="0 0 24 24"><path fill="currentColor" d="M19.1 12.9a7.5 7.5 0 000-1.8l2-1.5-2-3.5-2.4 1a7.4 7.4 0 00-1.6-.9L14.5 3h-5l-.6 2.7a7.4 7.4 0 00-1.6.9l-2.4-1-2 3.5 2 1.5a7.5 7.5 0 000 1.8l-2 1.5 2 3.5 2.4-1c.5.4 1 .7 1.6.9l.6 2.7h5l.6-2.7c.6-.2 1.1-.5 1.6-.9l2.4 1 2-3.5-2-1.5zM12 15.5A3.5 3.5 0 1112 8a3.5 3.5 0 010 7.5z"/></symbol>
+    <symbol id="icon-lang" viewBox="0 0 24 24"><circle fill="none" stroke="currentColor" stroke-width="2" cx="12" cy="12" r="9"/><path fill="none" stroke="currentColor" stroke-width="2" d="M3 12h18M12 3c2.5 2.7 4 6 4 9s-1.5 6.3-4 9c-2.5-2.7-4-6-4-9s1.5-6.3 4-9z"/></symbol>
+    <symbol id="icon-headphones" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" d="M3 14v-2a9 9 0 0118 0v2"/><path fill="currentColor" d="M3 14a2 2 0 002 2h1v-6H5a2 2 0 00-2 2v2zm16-4h-1v6h1a2 2 0 002-2v-2a2 2 0 00-2-2z"/></symbol>
+  </svg>
+
   <header class="site-header">
     <div class="header-inner">
       <a href="#" class="logo" data-view="home">
-        <span class="logo-icon">◈</span>
+        <svg class="logo-svg" width="28" height="28"><use href="#icon-wave"/></svg>
         <span class="logo-text">Frequency<span class="accent">Lab</span></span>
       </a>
       <nav class="main-nav">
-        <button class="nav-btn active" data-view="home">Home</button>
-        <button class="nav-btn" data-view="explore">Explore</button>
-        <button class="nav-btn" data-view="generator">Generator</button>
-        <button class="nav-btn" data-view="about">About</button>
+        <button class="nav-btn active" data-view="home"><svg class="nav-icon" width="16" height="16"><use href="#icon-home"/></svg> <span data-i18n="nav_home">خانه</span></button>
+        <button class="nav-btn" data-view="explore"><svg class="nav-icon" width="16" height="16"><use href="#icon-search"/></svg> <span data-i18n="nav_explore">کاوش</span></button>
+        <button class="nav-btn" data-view="generator"><svg class="nav-icon" width="16" height="16"><use href="#icon-wave"/></svg> <span data-i18n="nav_generator">مولد صدا</span></button>
+        <button class="nav-btn" data-view="about"><svg class="nav-icon" width="16" height="16"><use href="#icon-settings"/></svg> <span data-i18n="nav_about">درباره</span></button>
       </nav>
-      <button class="menu-toggle" id="menu-toggle" aria-label="Menu">
-        <span></span><span></span><span></span>
-      </button>
+      <div class="header-actions">
+        <button class="lang-btn" id="lang-toggle" title="Language">
+          <svg width="18" height="18"><use href="#icon-lang"/></svg>
+          <span id="lang-label">EN</span>
+        </button>
+        <button class="menu-toggle" id="menu-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
+      </div>
     </div>
   </header>
 
-  <!-- Mobile Nav -->
   <div class="mobile-nav" id="mobile-nav">
-    <button class="nav-btn" data-view="home">Home</button>
-    <button class="nav-btn" data-view="explore">Explore</button>
-    <button class="nav-btn" data-view="generator">Generator</button>
-    <button class="nav-btn" data-view="about">About</button>
+    <button class="nav-btn" data-view="home" data-i18n="nav_home">خانه</button>
+    <button class="nav-btn" data-view="explore" data-i18n="nav_explore">کاوش</button>
+    <button class="nav-btn" data-view="generator" data-i18n="nav_generator">مولد صدا</button>
+    <button class="nav-btn" data-view="about" data-i18n="nav_about">درباره</button>
   </div>
 
-  <!-- Main Content -->
   <main id="app">
-    <!-- HOME VIEW -->
+    <!-- HOME -->
     <section id="view-home" class="view active">
       <div class="hero">
         <div class="hero-glow"></div>
         <h1 class="hero-title">
-          <span class="line">Enter the</span>
-          <span class="line gradient-text">Frequency Universe</span>
+          <span class="line" data-i18n="hero_line1">ورود به</span>
+          <span class="line gradient-text" data-i18n="hero_line2">جهان فرکانس</span>
         </h1>
-        <p class="hero-subtitle">Interactive research platform for auditory frequencies — scientific brainwave bands & spiritual traditions. Real-time sound generation. Fully local.</p>
+        <p class="hero-subtitle" data-i18n="hero_sub">پلتفرم تعاملی برای پژوهش فرکانس‌های صوتی — باندهای موج مغزی علمی و سنت‌های معنوی. تولید صدای لحظه‌ای. کاملاً محلی.</p>
         <div class="hero-actions">
-          <button class="btn btn-primary" data-view="explore">Explore Frequencies</button>
-          <button class="btn btn-ghost" data-view="generator">Open Generator</button>
+          <button class="btn btn-primary" data-view="explore" data-i18n="btn_explore">کاوش فرکانس‌ها</button>
+          <button class="btn btn-ghost" data-view="generator" data-i18n="btn_generator">باز کردن مولد</button>
         </div>
         <div class="hero-wave">
-          <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
-            <path class="wave-path" d="M0,60 Q150,20 300,60 T600,60 T900,60 T1200,60 L1200,120 L0,120 Z" />
-          </svg>
+          <svg viewBox="0 0 1200 120" preserveAspectRatio="none"><path class="wave-path" d="M0,60 Q150,20 300,60 T600,60 T900,60 T1200,60 L1200,120 L0,120 Z"/></svg>
         </div>
       </div>
-
       <div class="categories-grid">
         <article class="category-card scientific" data-category="scientific">
           <div class="card-glow"></div>
-          <div class="card-icon">🧠</div>
-          <h2>Scientific Frequencies</h2>
-          <p>Delta · Theta · Alpha · Beta · Gamma · 40 Hz · Binaural · Monaural · Isochronic</p>
-          <p class="card-desc">Frequencies investigated for attention, relaxation, memory, sleep and cognition.</p>
-          <span class="card-cta">Enter Lab →</span>
+          <div class="card-icon-wrap"><svg width="40" height="40"><use href="#icon-brain"/></svg></div>
+          <h2 data-i18n="cat_scientific">فرکانس‌های علمی</h2>
+          <p data-i18n="cat_scientific_tags">دلتا · تتا · آلفا · بتا · گاما · ۴۰ هرتز · بینورال · مونورال · ایزوکرونیک</p>
+          <p class="card-desc" data-i18n="cat_scientific_desc">فرکانس‌هایی که برای توجه، آرامش، حافظه، خواب و شناخت بررسی شده‌اند.</p>
+          <span class="card-cta" data-i18n="cat_enter">ورود به آزمایشگاه ←</span>
         </article>
         <article class="category-card mystical" data-category="mystical">
           <div class="card-glow"></div>
-          <div class="card-icon">🔮</div>
-          <h2>Mystical / Spiritual</h2>
-          <p>432 Hz · 528 Hz · 639 Hz · 741 Hz · 852 Hz · 963 Hz · Solfeggio</p>
-          <p class="card-desc">Frequencies from spiritual & cultural traditions. Claims clearly separated from science.</p>
-          <span class="card-cta">Explore →</span>
+          <div class="card-icon-wrap"><svg width="40" height="40"><use href="#icon-spark"/></svg></div>
+          <h2 data-i18n="cat_mystical">عرفانی / معنوی</h2>
+          <p data-i18n="cat_mystical_tags">۴۳۲ هرتز · ۵۲۸ هرتز · ۶۳۹ هرتز · ۷۴۱ هرتز · ۸۵۲ هرتز · ۹۶۳ هرتز · سولفیجیو</p>
+          <p class="card-desc" data-i18n="cat_mystical_desc">فرکانس‌های سنت‌های معنوی و فرهنگی. ادعاها از شواهد علمی جدا شده‌اند.</p>
+          <span class="card-cta" data-i18n="cat_explore">کاوش ←</span>
         </article>
       </div>
-
       <div class="quick-stats">
-        <div class="stat-item">
-          <span class="stat-num" id="stat-total">0</span>
-          <span class="stat-label">Frequencies</span>
-        </div>
-        <div class="stat-item">
-          <span class="stat-num">2</span>
-          <span class="stat-label">Categories</span>
-        </div>
-        <div class="stat-item">
-          <span class="stat-num">∞</span>
-          <span class="stat-label">Real-time Audio</span>
-        </div>
+        <div class="stat-item"><span class="stat-num" id="stat-total">0</span><span class="stat-label" data-i18n="stat_freq">فرکانس</span></div>
+        <div class="stat-item"><span class="stat-num">2</span><span class="stat-label" data-i18n="stat_cat">دسته</span></div>
+        <div class="stat-item"><span class="stat-num">∞</span><span class="stat-label" data-i18n="stat_audio">صدای لحظه‌ای</span></div>
       </div>
     </section>
 
-    <!-- EXPLORE VIEW -->
+    <!-- EXPLORE -->
     <section id="view-explore" class="view">
       <div class="explore-header">
-        <h1 class="section-title">Frequency Database</h1>
-        <p class="section-sub">Search, filter and inspect research-backed and traditional frequencies.</p>
+        <h1 class="section-title" data-i18n="explore_title">پایگاه داده فرکانس</h1>
+        <p class="section-sub" data-i18n="explore_sub">جستجو، فیلتر و بررسی فرکانس‌های پژوهشی و سنتی.</p>
       </div>
-
       <div class="search-panel glass">
         <div class="search-row">
-          <input type="search" id="search-input" placeholder="Search by Hz, name, purpose, brainwave..." autocomplete="off" />
+          <input type="search" id="search-input" data-i18n-placeholder="search_ph" placeholder="جستجو…" autocomplete="off" />
           <select id="filter-category">
-            <option value="all">All Categories</option>
-            <option value="scientific">Scientific</option>
-            <option value="mystical">Mystical / Spiritual</option>
+            <option value="all" data-i18n="filter_all_cat">همه دسته‌ها</option>
+            <option value="scientific" data-i18n="filter_sci">علمی</option>
+            <option value="mystical" data-i18n="filter_mys">عرفانی / معنوی</option>
           </select>
           <select id="filter-evidence">
-            <option value="all">All Evidence Levels</option>
-            <option value="strong">Strong Evidence</option>
-            <option value="moderate">Moderate Evidence</option>
-            <option value="limited">Limited Evidence</option>
+            <option value="all" data-i18n="filter_all_ev">همه سطوح شواهد</option>
+            <option value="strong">Strong</option>
+            <option value="moderate">Moderate</option>
+            <option value="limited">Limited</option>
             <option value="preliminary">Preliminary</option>
             <option value="insufficient">Insufficient</option>
-            <option value="traditional">Traditional / Spiritual</option>
+            <option value="traditional">Traditional</option>
           </select>
           <select id="sort-by">
-            <option value="hz-asc">Hz ↑</option>
-            <option value="hz-desc">Hz ↓</option>
-            <option value="name">Name</option>
-            <option value="evidence">Evidence</option>
+            <option value="hz-asc" data-i18n="sort_hz_asc">هرتز ↑</option>
+            <option value="hz-desc" data-i18n="sort_hz_desc">هرتز ↓</option>
+            <option value="name" data-i18n="sort_name">نام</option>
+            <option value="evidence" data-i18n="sort_evidence">شواهد</option>
           </select>
         </div>
       </div>
-
       <div class="freq-grid" id="freq-grid"></div>
     </section>
 
-    <!-- DETAIL VIEW -->
+    <!-- DETAIL -->
     <section id="view-detail" class="view">
-      <button class="back-btn" id="back-to-explore">← Back to Explore</button>
-      <div class="detail-layout" id="detail-content">
-        <!-- Filled by JS -->
-      </div>
+      <button class="back-btn" id="back-to-explore" data-i18n="back">→ بازگشت به کاوش</button>
+      <div class="detail-layout" id="detail-content"></div>
     </section>
 
-    <!-- GENERATOR VIEW -->
+    <!-- GENERATOR -->
     <section id="view-generator" class="view">
       <div class="gen-header">
-        <h1 class="section-title">Frequency Generator</h1>
-        <p class="section-sub">Real-time Web Audio synthesis. No pre-recorded files. Fully local.</p>
+        <h1 class="section-title" data-i18n="gen_title">مولد فرکانس</h1>
+        <p class="section-sub" data-i18n="gen_sub">سنتز صدای لحظه‌ای با Web Audio. بدون فایل از پیش ضبط‌شده. کاملاً محلی.</p>
       </div>
-
+      <div class="recommendations glass" id="recommendations">
+        <div class="rec-item" data-rec="focus"><svg width="18" height="18"><use href="#icon-focus"/></svg> <span data-i18n="rec_focus"></span></div>
+        <div class="rec-item" data-rec="relax"><svg width="18" height="18"><use href="#icon-relax"/></svg> <span data-i18n="rec_relax"></span></div>
+        <div class="rec-item" data-rec="sleep"><svg width="18" height="18"><use href="#icon-moon"/></svg> <span data-i18n="rec_sleep"></span></div>
+      </div>
       <div class="generator-panel glass">
         <div class="gen-visual">
-          <canvas id="wave-canvas" width="800" height="200"></canvas>
-          <div class="spectrum-bar" id="spectrum-bar"></div>
+          <canvas id="wave-canvas" width="800" height="220"></canvas>
         </div>
-
         <div class="gen-controls">
           <div class="control-group">
-            <label>Mode</label>
+            <label data-i18n="mode">حالت</label>
             <div class="mode-btns">
-              <button class="mode-btn active" data-mode="binaural">Binaural</button>
-              <button class="mode-btn" data-mode="monaural">Monaural</button>
-              <button class="mode-btn" data-mode="isochronic">Isochronic</button>
-              <button class="mode-btn" data-mode="pure">Pure Tone</button>
+              <button class="mode-btn active" data-mode="binaural" data-i18n="mode_binaural">بینورال</button>
+              <button class="mode-btn" data-mode="monaural" data-i18n="mode_monaural">مونورال</button>
+              <button class="mode-btn" data-mode="isochronic" data-i18n="mode_isochronic">ایزوکرونیک</button>
+              <button class="mode-btn" data-mode="pure" data-i18n="mode_pure">تون خالص</button>
             </div>
           </div>
-
           <div class="control-row">
             <div class="control-group">
-              <label>Carrier / Base (Hz) <span id="carrier-val">200</span></label>
+              <label><span data-i18n="carrier">Carrier</span> <span id="carrier-val" class="val">200</span></label>
               <input type="range" id="carrier-freq" min="50" max="1000" value="200" step="1" />
             </div>
             <div class="control-group" id="beat-group">
-              <label>Beat Frequency (Hz) <span id="beat-val">10</span></label>
+              <label><span data-i18n="beat">Beat</span> <span id="beat-val" class="val">10</span></label>
               <input type="range" id="beat-freq" min="0.5" max="40" value="10" step="0.5" />
             </div>
           </div>
-
-          <div class="control-row">
+          <div class="control-row" id="lr-row">
             <div class="control-group">
-              <label>Left Ear (Hz) <span id="left-val">195</span></label>
+              <label><span data-i18n="left_ear">Left</span> <span id="left-val" class="val">195</span></label>
               <input type="range" id="left-freq" min="50" max="1000" value="195" step="1" />
             </div>
             <div class="control-group">
-              <label>Right Ear (Hz) <span id="right-val">205</span></label>
+              <label><span data-i18n="right_ear">Right</span> <span id="right-val" class="val">205</span></label>
               <input type="range" id="right-freq" min="50" max="1000" value="205" step="1" />
             </div>
           </div>
-
           <div class="control-row">
             <div class="control-group">
-              <label>Waveform</label>
+              <label data-i18n="waveform">Waveform</label>
               <select id="waveform">
                 <option value="sine">Sine</option>
-                <option value="square">Square</option>
                 <option value="triangle">Triangle</option>
+                <option value="square">Square</option>
                 <option value="sawtooth">Sawtooth</option>
               </select>
             </div>
             <div class="control-group">
-              <label>Volume <span id="vol-val">30%</span></label>
-              <input type="range" id="volume" min="0" max="100" value="30" />
+              <label><span data-i18n="volume">Volume</span> <span id="vol-val" class="val">28%</span></label>
+              <input type="range" id="volume" min="0" max="70" value="28" />
+            </div>
+          </div>
+          <div class="control-row">
+            <div class="control-group">
+              <label><span data-i18n="balance">Balance</span> <span id="bal-val" class="val">0</span></label>
+              <input type="range" id="balance" min="-100" max="100" value="0" />
             </div>
             <div class="control-group">
-              <label>Duration (s) <span id="dur-val">∞</span></label>
+              <label><span data-i18n="duration">Duration</span> <span id="dur-val" class="val">∞</span></label>
               <input type="range" id="duration" min="0" max="600" value="0" step="10" />
             </div>
           </div>
-
+          <div class="control-row">
+            <div class="control-group">
+              <label><span data-i18n="fade_in">Fade In</span> <span id="fadein-val" class="val">1.2</span></label>
+              <input type="range" id="fade-in" min="0.1" max="5" value="1.2" step="0.1" />
+            </div>
+            <div class="control-group">
+              <label><span data-i18n="fade_out">Fade Out</span> <span id="fadeout-val" class="val">1.5</span></label>
+              <input type="range" id="fade-out" min="0.1" max="5" value="1.5" step="0.1" />
+            </div>
+          </div>
           <div class="control-group">
-            <label>Background Noise</label>
+            <label data-i18n="noise">Background Noise</label>
             <select id="noise-type">
-              <option value="none">None</option>
-              <option value="white">White Noise</option>
-              <option value="pink">Pink Noise</option>
-              <option value="brown">Brown Noise</option>
+              <option value="none" data-i18n="noise_none">None</option>
+              <option value="white" data-i18n="noise_white">White</option>
+              <option value="pink" data-i18n="noise_pink">Pink</option>
+              <option value="brown" data-i18n="noise_brown">Brown</option>
             </select>
           </div>
-
           <div class="presets">
-            <label>Quick Presets</label>
+            <label data-i18n="presets">Professional Presets</label>
             <div class="preset-btns" id="preset-btns"></div>
           </div>
-
           <div class="gen-actions">
-            <button class="btn btn-primary btn-lg" id="play-btn">▶ Play</button>
-            <button class="btn btn-ghost btn-lg" id="stop-btn" disabled>■ Stop</button>
+            <button class="btn btn-primary btn-lg" id="play-btn">
+              <svg width="20" height="20"><use href="#icon-play"/></svg>
+              <span data-i18n="play">پخش</span>
+            </button>
+            <button class="btn btn-ghost btn-lg" id="stop-btn" disabled>
+              <svg width="20" height="20"><use href="#icon-stop"/></svg>
+              <span data-i18n="stop">توقف</span>
+            </button>
           </div>
-
           <div class="safety-note">
-            ⚠️ Use headphones for binaural beats. Start at low volume. Do not use while driving or operating machinery. This is not medical treatment.
+            <svg width="16" height="16" style="vertical-align:middle;margin-inline-end:6px"><use href="#icon-headphones"/></svg>
+            <span data-i18n="safety">⚠️ Use headphones…</span>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ABOUT VIEW -->
+    <!-- ABOUT -->
     <section id="view-about" class="view">
       <div class="about-content glass">
-        <h1 class="section-title">About Frequency Lab</h1>
-        <p>Frequency Lab is a <strong>local-first</strong> interactive platform for exploring auditory frequencies used in research and spiritual traditions.</p>
-        <h3>Design Principles</h3>
+        <h1 class="section-title" data-i18n="about_title">درباره آزمایشگاه فرکانس</h1>
+        <p data-i18n="about_p1"></p>
+        <h3 data-i18n="about_principles"></h3>
         <ul>
-          <li>No backend required — runs entirely in the browser.</li>
-          <li>All frequency data is stored locally in JSON.</li>
-          <li>Real-time sound generation via Web Audio API (no audio files).</li>
-          <li>Scientific claims are clearly separated from traditional/spiritual claims.</li>
-          <li>No frequency is presented as proven medical treatment.</li>
+          <li data-i18n="about_li1"></li>
+          <li data-i18n="about_li2"></li>
+          <li data-i18n="about_li3"></li>
+          <li data-i18n="about_li4"></li>
+          <li data-i18n="about_li5"></li>
         </ul>
-        <h3>Evidence Levels</h3>
+        <h3 data-i18n="about_evidence"></h3>
         <div class="evidence-legend" id="evidence-legend"></div>
-        <h3>Audio Safety</h3>
-        <p>Always start at low volume. Prefer headphones only when required (binaural). Avoid prolonged high-volume exposure. Consult a professional for any health-related use.</p>
-        <p class="disclaimer">This project is for educational and research exploration only. It does not provide medical advice.</p>
+        <h3 data-i18n="about_safety"></h3>
+        <p data-i18n="about_safety_p"></p>
+        <p class="disclaimer" data-i18n="about_disclaimer"></p>
       </div>
     </section>
   </main>
 
-  <!-- Toast -->
   <div id="toast" class="toast"></div>
 
+  <script src="js/i18n.js"></script>
   <script src="js/audio-engine.js"></script>
   <script src="js/visuals.js"></script>
   <script src="js/app.js"></script>
