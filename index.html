@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="description" content="Frequency Lab — Interactive Frequency & Sound Research Platform. Explore scientific and spiritual frequencies with real-time Web Audio generation." />
+  <title>Frequency Lab — Interactive Frequency & Sound Research</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <!-- Animated Background -->
+  <div id="bg-canvas-wrap">
+    <canvas id="bg-canvas"></canvas>
+  </div>
+  <div class="particles" id="particles"></div>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="#" class="logo" data-view="home">
+        <span class="logo-icon">◈</span>
+        <span class="logo-text">Frequency<span class="accent">Lab</span></span>
+      </a>
+      <nav class="main-nav">
+        <button class="nav-btn active" data-view="home">Home</button>
+        <button class="nav-btn" data-view="explore">Explore</button>
+        <button class="nav-btn" data-view="generator">Generator</button>
+        <button class="nav-btn" data-view="about">About</button>
+      </nav>
+      <button class="menu-toggle" id="menu-toggle" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile Nav -->
+  <div class="mobile-nav" id="mobile-nav">
+    <button class="nav-btn" data-view="home">Home</button>
+    <button class="nav-btn" data-view="explore">Explore</button>
+    <button class="nav-btn" data-view="generator">Generator</button>
+    <button class="nav-btn" data-view="about">About</button>
+  </div>
+
+  <!-- Main Content -->
+  <main id="app">
+    <!-- HOME VIEW -->
+    <section id="view-home" class="view active">
+      <div class="hero">
+        <div class="hero-glow"></div>
+        <h1 class="hero-title">
+          <span class="line">Enter the</span>
+          <span class="line gradient-text">Frequency Universe</span>
+        </h1>
+        <p class="hero-subtitle">Interactive research platform for auditory frequencies — scientific brainwave bands & spiritual traditions. Real-time sound generation. Fully local.</p>
+        <div class="hero-actions">
+          <button class="btn btn-primary" data-view="explore">Explore Frequencies</button>
+          <button class="btn btn-ghost" data-view="generator">Open Generator</button>
+        </div>
+        <div class="hero-wave">
+          <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+            <path class="wave-path" d="M0,60 Q150,20 300,60 T600,60 T900,60 T1200,60 L1200,120 L0,120 Z" />
+          </svg>
+        </div>
+      </div>
+
+      <div class="categories-grid">
+        <article class="category-card scientific" data-category="scientific">
+          <div class="card-glow"></div>
+          <div class="card-icon">🧠</div>
+          <h2>Scientific Frequencies</h2>
+          <p>Delta · Theta · Alpha · Beta · Gamma · 40 Hz · Binaural · Monaural · Isochronic</p>
+          <p class="card-desc">Frequencies investigated for attention, relaxation, memory, sleep and cognition.</p>
+          <span class="card-cta">Enter Lab →</span>
+        </article>
+        <article class="category-card mystical" data-category="mystical">
+          <div class="card-glow"></div>
+          <div class="card-icon">🔮</div>
+          <h2>Mystical / Spiritual</h2>
+          <p>432 Hz · 528 Hz · 639 Hz · 741 Hz · 852 Hz · 963 Hz · Solfeggio</p>
+          <p class="card-desc">Frequencies from spiritual & cultural traditions. Claims clearly separated from science.</p>
+          <span class="card-cta">Explore →</span>
+        </article>
+      </div>
+
+      <div class="quick-stats">
+        <div class="stat-item">
+          <span class="stat-num" id="stat-total">0</span>
+          <span class="stat-label">Frequencies</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">2</span>
+          <span class="stat-label">Categories</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">∞</span>
+          <span class="stat-label">Real-time Audio</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPLORE VIEW -->
+    <section id="view-explore" class="view">
+      <div class="explore-header">
+        <h1 class="section-title">Frequency Database</h1>
+        <p class="section-sub">Search, filter and inspect research-backed and traditional frequencies.</p>
+      </div>
+
+      <div class="search-panel glass">
+        <div class="search-row">
+          <input type="search" id="search-input" placeholder="Search by Hz, name, purpose, brainwave..." autocomplete="off" />
+          <select id="filter-category">
+            <option value="all">All Categories</option>
+            <option value="scientific">Scientific</option>
+            <option value="mystical">Mystical / Spiritual</option>
+          </select>
+          <select id="filter-evidence">
+            <option value="all">All Evidence Levels</option>
+            <option value="strong">Strong Evidence</option>
+            <option value="moderate">Moderate Evidence</option>
+            <option value="limited">Limited Evidence</option>
+            <option value="preliminary">Preliminary</option>
+            <option value="insufficient">Insufficient</option>
+            <option value="traditional">Traditional / Spiritual</option>
+          </select>
+          <select id="sort-by">
+            <option value="hz-asc">Hz ↑</option>
+            <option value="hz-desc">Hz ↓</option>
+            <option value="name">Name</option>
+            <option value="evidence">Evidence</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="freq-grid" id="freq-grid"></div>
+    </section>
+
+    <!-- DETAIL VIEW -->
+    <section id="view-detail" class="view">
+      <button class="back-btn" id="back-to-explore">← Back to Explore</button>
+      <div class="detail-layout" id="detail-content">
+        <!-- Filled by JS -->
+      </div>
+    </section>
+
+    <!-- GENERATOR VIEW -->
+    <section id="view-generator" class="view">
+      <div class="gen-header">
+        <h1 class="section-title">Frequency Generator</h1>
+        <p class="section-sub">Real-time Web Audio synthesis. No pre-recorded files. Fully local.</p>
+      </div>
+
+      <div class="generator-panel glass">
+        <div class="gen-visual">
+          <canvas id="wave-canvas" width="800" height="200"></canvas>
+          <div class="spectrum-bar" id="spectrum-bar"></div>
+        </div>
+
+        <div class="gen-controls">
+          <div class="control-group">
+            <label>Mode</label>
+            <div class="mode-btns">
+              <button class="mode-btn active" data-mode="binaural">Binaural</button>
+              <button class="mode-btn" data-mode="monaural">Monaural</button>
+              <button class="mode-btn" data-mode="isochronic">Isochronic</button>
+              <button class="mode-btn" data-mode="pure">Pure Tone</button>
+            </div>
+          </div>
+
+          <div class="control-row">
+            <div class="control-group">
+              <label>Carrier / Base (Hz) <span id="carrier-val">200</span></label>
+              <input type="range" id="carrier-freq" min="50" max="1000" value="200" step="1" />
+            </div>
+            <div class="control-group" id="beat-group">
+              <label>Beat Frequency (Hz) <span id="beat-val">10</span></label>
+              <input type="range" id="beat-freq" min="0.5" max="40" value="10" step="0.5" />
+            </div>
+          </div>
+
+          <div class="control-row">
+            <div class="control-group">
+              <label>Left Ear (Hz) <span id="left-val">195</span></label>
+              <input type="range" id="left-freq" min="50" max="1000" value="195" step="1" />
+            </div>
+            <div class="control-group">
+              <label>Right Ear (Hz) <span id="right-val">205</span></label>
+              <input type="range" id="right-freq" min="50" max="1000" value="205" step="1" />
+            </div>
+          </div>
+
+          <div class="control-row">
+            <div class="control-group">
+              <label>Waveform</label>
+              <select id="waveform">
+                <option value="sine">Sine</option>
+                <option value="square">Square</option>
+                <option value="triangle">Triangle</option>
+                <option value="sawtooth">Sawtooth</option>
+              </select>
+            </div>
+            <div class="control-group">
+              <label>Volume <span id="vol-val">30%</span></label>
+              <input type="range" id="volume" min="0" max="100" value="30" />
+            </div>
+            <div class="control-group">
+              <label>Duration (s) <span id="dur-val">∞</span></label>
+              <input type="range" id="duration" min="0" max="600" value="0" step="10" />
+            </div>
+          </div>
+
+          <div class="control-group">
+            <label>Background Noise</label>
+            <select id="noise-type">
+              <option value="none">None</option>
+              <option value="white">White Noise</option>
+              <option value="pink">Pink Noise</option>
+              <option value="brown">Brown Noise</option>
+            </select>
+          </div>
+
+          <div class="presets">
+            <label>Quick Presets</label>
+            <div class="preset-btns" id="preset-btns"></div>
+          </div>
+
+          <div class="gen-actions">
+            <button class="btn btn-primary btn-lg" id="play-btn">▶ Play</button>
+            <button class="btn btn-ghost btn-lg" id="stop-btn" disabled>■ Stop</button>
+          </div>
+
+          <div class="safety-note">
+            ⚠️ Use headphones for binaural beats. Start at low volume. Do not use while driving or operating machinery. This is not medical treatment.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT VIEW -->
+    <section id="view-about" class="view">
+      <div class="about-content glass">
+        <h1 class="section-title">About Frequency Lab</h1>
+        <p>Frequency Lab is a <strong>local-first</strong> interactive platform for exploring auditory frequencies used in research and spiritual traditions.</p>
+        <h3>Design Principles</h3>
+        <ul>
+          <li>No backend required — runs entirely in the browser.</li>
+          <li>All frequency data is stored locally in JSON.</li>
+          <li>Real-time sound generation via Web Audio API (no audio files).</li>
+          <li>Scientific claims are clearly separated from traditional/spiritual claims.</li>
+          <li>No frequency is presented as proven medical treatment.</li>
+        </ul>
+        <h3>Evidence Levels</h3>
+        <div class="evidence-legend" id="evidence-legend"></div>
+        <h3>Audio Safety</h3>
+        <p>Always start at low volume. Prefer headphones only when required (binaural). Avoid prolonged high-volume exposure. Consult a professional for any health-related use.</p>
+        <p class="disclaimer">This project is for educational and research exploration only. It does not provide medical advice.</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- Toast -->
+  <div id="toast" class="toast"></div>
+
+  <script src="js/audio-engine.js"></script>
+  <script src="js/visuals.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
