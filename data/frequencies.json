@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "Frequency Lab Dataset",
-    "version": "2.0.0",
+    "version": "2.1.0",
     "description": "Structured research database based on standard EEG frequency bands (Delta 0.5–4, Theta 4–8, Alpha 8–13, Beta 13–30, Gamma 30–100 Hz) and common traditional/Solfeggio tones. Scientific claims are separated from traditional claims.",
     "lastUpdated": "2026-09-25",
     "standardReference": "Common EEG band conventions (AASM / clinical EEG literature). Band edges vary slightly by source (±1 Hz).",
@@ -81,7 +81,11 @@
       "frequencyType": "Brainwave Band",
       "frequencyTypeFa": "باند موج مغزی",
       "brainwaveBand": "Delta",
-      "audioMethod": ["Binaural Beat", "Isochronic Tone", "Monaural Beat"],
+      "audioMethod": [
+        "Binaural Beat",
+        "Isochronic Tone",
+        "Monaural Beat"
+      ],
       "carrierFrequency": 200,
       "beatFrequency": 2,
       "intendedEffect": "Associated with deep NREM (N3) sleep and physical restoration in EEG literature.",
@@ -99,7 +103,11 @@
       "source": "Standard EEG bands (clinical EEG / AASM-related conventions)",
       "publicationYear": null,
       "doi": null,
-      "tags": ["sleep", "delta", "deep sleep"]
+      "tags": [
+        "sleep",
+        "delta",
+        "deep sleep"
+      ]
     },
     {
       "id": "theta-6hz",
@@ -112,7 +120,10 @@
       "frequencyType": "Brainwave Band",
       "frequencyTypeFa": "باند موج مغزی",
       "brainwaveBand": "Theta",
-      "audioMethod": ["Binaural Beat", "Isochronic Tone"],
+      "audioMethod": [
+        "Binaural Beat",
+        "Isochronic Tone"
+      ],
       "carrierFrequency": 200,
       "beatFrequency": 6,
       "intendedEffect": "Linked to relaxed/meditative states, hypnagogia, and hippocampal processes related to memory.",
@@ -130,7 +141,12 @@
       "source": "EEG literature; binaural-beat reviews",
       "publicationYear": 2024,
       "doi": "10.1038/s41598-024-68628-9",
-      "tags": ["theta", "meditation", "memory", "relaxation"]
+      "tags": [
+        "theta",
+        "meditation",
+        "memory",
+        "relaxation"
+      ]
     },
     {
       "id": "alpha-10hz",
@@ -143,7 +159,11 @@
       "frequencyType": "Brainwave Band",
       "frequencyTypeFa": "باند موج مغزی",
       "brainwaveBand": "Alpha",
-      "audioMethod": ["Binaural Beat", "Isochronic Tone", "Monaural Beat"],
+      "audioMethod": [
+        "Binaural Beat",
+        "Isochronic Tone",
+        "Monaural Beat"
+      ],
       "carrierFrequency": 200,
       "beatFrequency": 10,
       "intendedEffect": "Classic eyes-closed resting rhythm; associated with calm but awake states.",
@@ -161,7 +181,12 @@
       "source": "Standard EEG classification",
       "publicationYear": null,
       "doi": null,
-      "tags": ["alpha", "relaxation", "calm", "stress"]
+      "tags": [
+        "alpha",
+        "relaxation",
+        "calm",
+        "stress"
+      ]
     },
     {
       "id": "beta-15hz",
@@ -174,7 +199,10 @@
       "frequencyType": "Brainwave Band",
       "frequencyTypeFa": "باند موج مغزی",
       "brainwaveBand": "Beta",
-      "audioMethod": ["Binaural Beat", "Isochronic Tone"],
+      "audioMethod": [
+        "Binaural Beat",
+        "Isochronic Tone"
+      ],
       "carrierFrequency": 250,
       "beatFrequency": 15,
       "intendedEffect": "Associated with active thinking, concentration, and task engagement. Higher beta can relate to tension in some contexts.",
@@ -192,7 +220,12 @@
       "source": "EEG literature",
       "publicationYear": null,
       "doi": null,
-      "tags": ["beta", "focus", "attention", "cognition"]
+      "tags": [
+        "beta",
+        "focus",
+        "attention",
+        "cognition"
+      ]
     },
     {
       "id": "gamma-40hz",
@@ -205,7 +238,10 @@
       "frequencyType": "Brainwave Band / Sensory Stimulation",
       "frequencyTypeFa": "باند موج مغزی / تحریک حسی",
       "brainwaveBand": "Gamma",
-      "audioMethod": ["Isochronic Tone", "Auditory Click Train"],
+      "audioMethod": [
+        "Isochronic Tone",
+        "Auditory Click Train"
+      ],
       "carrierFrequency": 200,
       "beatFrequency": 40,
       "intendedEffect": "Investigated for gamma entrainment, microglial activity, and amyloid-related pathology in AD models and early human trials (e.g. Tsai Lab / MIT line of work).",
@@ -223,7 +259,89 @@
       "source": "Murdock et al. Nature 2024; Tsai Lab publications",
       "publicationYear": 2024,
       "doi": "10.1038/s41586-024-07132-6",
-      "tags": ["gamma", "40hz", "alzheimer", "cognition"]
+      "tags": [
+        "gamma",
+        "40hz",
+        "alzheimer",
+        "cognition"
+      ]
+    },
+    {
+      "id": "smr-12hz",
+      "name": "SMR 12–15 Hz — Sensorimotor Rhythm",
+      "nameFa": "SMR ۱۲–۱۵ هرتز — ریتم حسی‌حرکتی",
+      "hz": 13,
+      "hzRange": "12–15",
+      "unit": "Hz",
+      "category": "scientific",
+      "frequencyType": "Brainwave Band",
+      "frequencyTypeFa": "باند موج مغزی",
+      "brainwaveBand": "SMR / Low Beta",
+      "audioMethod": [
+        "Binaural Beat",
+        "Isochronic Tone"
+      ],
+      "carrierFrequency": 200,
+      "beatFrequency": 13,
+      "intendedEffect": "Sensorimotor rhythm (≈12–15 Hz) is linked in neurofeedback literature to calm focused attention and motor inhibition at rest.",
+      "intendedEffectFa": "ریتم حسی‌حرکتی (حدود ۱۲ تا ۱۵ هرتز) در ادبیات نوروفیدبک با توجه آرام و متمرکز و مهار حرکتی در حالت استراحت مرتبط است.",
+      "claimedEffect": null,
+      "humanEvidence": "SMR neurofeedback has a moderate research base for attention-related outcomes; evidence for passive auditory SMR entrainment is more limited than active neurofeedback.",
+      "humanEvidenceFa": "نوروفیدبک SMR پایه پژوهشی متوسطی برای پیامدهای مرتبط با توجه دارد؛ شواهد برای همگام‌سازی صوتی منفعل SMR محدودتر از نوروفیدبک فعال است.",
+      "studyType": "Neurofeedback literature + limited auditory studies",
+      "sampleSize": "Variable",
+      "results": "Stronger support for active SMR training than for passive audio alone.",
+      "resultsFa": "پشتیبانی قوی‌تر برای آموزش فعال SMR نسبت به صدای منفعل به‌تنهایی.",
+      "evidenceLevel": "limited",
+      "safetyNotes": "Generally safe at moderate volume.",
+      "safetyNotesFa": "در صدای متوسط معمولاً ایمن است.",
+      "source": "SMR / sensorimotor neurofeedback reviews",
+      "publicationYear": null,
+      "doi": null,
+      "tags": [
+        "smr",
+        "focus",
+        "attention",
+        "low beta"
+      ]
+    },
+    {
+      "id": "beta-20hz",
+      "name": "Beta 20 Hz — High Focus",
+      "nameFa": "بتا ۲۰ هرتز — تمرکز بالا",
+      "hz": 20,
+      "hzRange": "16–24",
+      "unit": "Hz",
+      "category": "scientific",
+      "frequencyType": "Brainwave Band",
+      "frequencyTypeFa": "باند موج مغزی",
+      "brainwaveBand": "Beta",
+      "audioMethod": [
+        "Binaural Beat",
+        "Isochronic Tone"
+      ],
+      "carrierFrequency": 250,
+      "beatFrequency": 20,
+      "intendedEffect": "Mid-to-high beta associated with active concentration and analytical work; excess may correlate with tension.",
+      "intendedEffectFa": "بتای میانی تا بالا با تمرکز فعال و کار تحلیلی مرتبط است؛ مقدار زیاد ممکن است با تنش همراه باشد.",
+      "claimedEffect": null,
+      "humanEvidence": "Endogenous beta tracks cognitive effort. External 20 Hz auditory stimulation has limited, mixed evidence for performance gains.",
+      "humanEvidenceFa": "بتای درون‌زاد با تلاش شناختی هم‌خوانی دارد. تحریک صوتی ۲۰ هرتز شواهد محدود و مختلطی برای بهبود عملکرد دارد.",
+      "studyType": "EEG + small intervention trials",
+      "sampleSize": "Often small",
+      "results": "Limited causal evidence for audio-only beta training.",
+      "resultsFa": "شواهد علّی محدود برای آموزش بتای صرفاً صوتی.",
+      "evidenceLevel": "limited",
+      "safetyNotes": "May feel stimulating; lower volume if tense.",
+      "safetyNotesFa": "ممکن است محرک به‌نظر برسد؛ در صورت تنش صدا را کم کنید.",
+      "source": "EEG beta band literature",
+      "publicationYear": null,
+      "doi": null,
+      "tags": [
+        "beta",
+        "focus",
+        "cognition"
+      ]
     },
     {
       "id": "binaural-method",
@@ -236,7 +354,9 @@
       "frequencyType": "Audio Method",
       "frequencyTypeFa": "روش صوتی",
       "brainwaveBand": "Variable",
-      "audioMethod": ["Binaural Beat"],
+      "audioMethod": [
+        "Binaural Beat"
+      ],
       "carrierFrequency": 200,
       "beatFrequency": 10,
       "intendedEffect": "Two pure tones of slightly different frequency, one per ear; the brain perceives a beat equal to the difference. Studied for anxiety, attention, pain, sleep.",
@@ -254,7 +374,12 @@
       "source": "Binaural-beat meta-analyses (cognition/anxiety/pain)",
       "publicationYear": 2019,
       "doi": null,
-      "tags": ["binaural", "method", "anxiety", "attention"]
+      "tags": [
+        "binaural",
+        "method",
+        "anxiety",
+        "attention"
+      ]
     },
     {
       "id": "monaural-method",
@@ -267,7 +392,9 @@
       "frequencyType": "Audio Method",
       "frequencyTypeFa": "روش صوتی",
       "brainwaveBand": "Variable",
-      "audioMethod": ["Monaural Beat"],
+      "audioMethod": [
+        "Monaural Beat"
+      ],
       "carrierFrequency": 200,
       "beatFrequency": 10,
       "intendedEffect": "Amplitude-modulated tone presented identically to both ears (physical beat in the air).",
@@ -285,7 +412,10 @@
       "source": "Comparative entrainment literature",
       "publicationYear": null,
       "doi": null,
-      "tags": ["monaural", "method"]
+      "tags": [
+        "monaural",
+        "method"
+      ]
     },
     {
       "id": "isochronic-method",
@@ -298,7 +428,9 @@
       "frequencyType": "Audio Method",
       "frequencyTypeFa": "روش صوتی",
       "brainwaveBand": "Variable",
-      "audioMethod": ["Isochronic Tone"],
+      "audioMethod": [
+        "Isochronic Tone"
+      ],
       "carrierFrequency": 200,
       "beatFrequency": 10,
       "intendedEffect": "Regularly pulsed on/off tones at a target rate; popular in commercial brainwave products.",
@@ -316,7 +448,11 @@
       "source": "Entrainment literature reviews",
       "publicationYear": null,
       "doi": null,
-      "tags": ["isochronic", "method", "pulsed"]
+      "tags": [
+        "isochronic",
+        "method",
+        "pulsed"
+      ]
     },
     {
       "id": "a440",
@@ -329,7 +465,10 @@
       "frequencyType": "Standard Tuning",
       "frequencyTypeFa": "کوک استاندارد",
       "brainwaveBand": null,
-      "audioMethod": ["Pure Tone", "Music"],
+      "audioMethod": [
+        "Pure Tone",
+        "Music"
+      ],
       "carrierFrequency": 440,
       "beatFrequency": null,
       "intendedEffect": "International reference pitch for A4 (ISO 16).",
@@ -347,7 +486,12 @@
       "source": "ISO 16 (1955/1975)",
       "publicationYear": 1955,
       "doi": null,
-      "tags": ["440", "tuning", "standard", "music"]
+      "tags": [
+        "440",
+        "tuning",
+        "standard",
+        "music"
+      ]
     },
     {
       "id": "solfeggio-396",
@@ -359,7 +503,10 @@
       "frequencyType": "Solfeggio / Spiritual",
       "frequencyTypeFa": "سولفیجیو / معنوی",
       "brainwaveBand": null,
-      "audioMethod": ["Pure Tone", "Music"],
+      "audioMethod": [
+        "Pure Tone",
+        "Music"
+      ],
       "carrierFrequency": 396,
       "beatFrequency": null,
       "intendedEffect": null,
@@ -377,7 +524,11 @@
       "source": "Modern Solfeggio tradition (non-scientific origin)",
       "publicationYear": null,
       "doi": null,
-      "tags": ["solfeggio", "396", "spiritual"]
+      "tags": [
+        "solfeggio",
+        "396",
+        "spiritual"
+      ]
     },
     {
       "id": "solfeggio-417",
@@ -389,7 +540,10 @@
       "frequencyType": "Solfeggio / Spiritual",
       "frequencyTypeFa": "سولفیجیو / معنوی",
       "brainwaveBand": null,
-      "audioMethod": ["Pure Tone", "Music"],
+      "audioMethod": [
+        "Pure Tone",
+        "Music"
+      ],
       "carrierFrequency": 417,
       "beatFrequency": null,
       "intendedEffect": null,
@@ -407,7 +561,10 @@
       "source": "Modern Solfeggio tradition",
       "publicationYear": null,
       "doi": null,
-      "tags": ["solfeggio", "417"]
+      "tags": [
+        "solfeggio",
+        "417"
+      ]
     },
     {
       "id": "solfeggio-528",
@@ -419,7 +576,10 @@
       "frequencyType": "Solfeggio / Spiritual",
       "frequencyTypeFa": "سولفیجیو / معنوی",
       "brainwaveBand": null,
-      "audioMethod": ["Pure Tone", "Music"],
+      "audioMethod": [
+        "Pure Tone",
+        "Music"
+      ],
       "carrierFrequency": 528,
       "beatFrequency": null,
       "intendedEffect": null,
@@ -437,7 +597,11 @@
       "source": "Akimoto et al. 2018; critical reviews of Solfeggio claims",
       "publicationYear": 2018,
       "doi": null,
-      "tags": ["solfeggio", "528", "love frequency"]
+      "tags": [
+        "solfeggio",
+        "528",
+        "love frequency"
+      ]
     },
     {
       "id": "solfeggio-639",
@@ -449,7 +613,10 @@
       "frequencyType": "Solfeggio / Spiritual",
       "frequencyTypeFa": "سولفیجیو / معنوی",
       "brainwaveBand": null,
-      "audioMethod": ["Pure Tone", "Music"],
+      "audioMethod": [
+        "Pure Tone",
+        "Music"
+      ],
       "carrierFrequency": 639,
       "beatFrequency": null,
       "intendedEffect": null,
@@ -467,7 +634,10 @@
       "source": "Modern Solfeggio tradition",
       "publicationYear": null,
       "doi": null,
-      "tags": ["solfeggio", "639"]
+      "tags": [
+        "solfeggio",
+        "639"
+      ]
     },
     {
       "id": "solfeggio-741",
@@ -479,7 +649,10 @@
       "frequencyType": "Solfeggio / Spiritual",
       "frequencyTypeFa": "سولفیجیو / معنوی",
       "brainwaveBand": null,
-      "audioMethod": ["Pure Tone", "Music"],
+      "audioMethod": [
+        "Pure Tone",
+        "Music"
+      ],
       "carrierFrequency": 741,
       "beatFrequency": null,
       "intendedEffect": null,
@@ -497,7 +670,10 @@
       "source": "Modern Solfeggio tradition",
       "publicationYear": null,
       "doi": null,
-      "tags": ["solfeggio", "741"]
+      "tags": [
+        "solfeggio",
+        "741"
+      ]
     },
     {
       "id": "solfeggio-852",
@@ -509,7 +685,10 @@
       "frequencyType": "Solfeggio / Spiritual",
       "frequencyTypeFa": "سولفیجیو / معنوی",
       "brainwaveBand": null,
-      "audioMethod": ["Pure Tone", "Music"],
+      "audioMethod": [
+        "Pure Tone",
+        "Music"
+      ],
       "carrierFrequency": 852,
       "beatFrequency": null,
       "intendedEffect": null,
@@ -527,7 +706,10 @@
       "source": "Modern Solfeggio tradition",
       "publicationYear": null,
       "doi": null,
-      "tags": ["solfeggio", "852"]
+      "tags": [
+        "solfeggio",
+        "852"
+      ]
     },
     {
       "id": "solfeggio-963",
@@ -539,7 +721,10 @@
       "frequencyType": "Solfeggio / Spiritual",
       "frequencyTypeFa": "سولفیجیو / معنوی",
       "brainwaveBand": null,
-      "audioMethod": ["Pure Tone", "Music"],
+      "audioMethod": [
+        "Pure Tone",
+        "Music"
+      ],
       "carrierFrequency": 963,
       "beatFrequency": null,
       "intendedEffect": null,
@@ -557,7 +742,10 @@
       "source": "Modern Solfeggio / New Age literature",
       "publicationYear": null,
       "doi": null,
-      "tags": ["solfeggio", "963"]
+      "tags": [
+        "solfeggio",
+        "963"
+      ]
     },
     {
       "id": "432hz",
@@ -569,7 +757,10 @@
       "frequencyType": "Alternative Tuning",
       "frequencyTypeFa": "کوک جایگزین",
       "brainwaveBand": null,
-      "audioMethod": ["Music", "Pure Tone"],
+      "audioMethod": [
+        "Music",
+        "Pure Tone"
+      ],
       "carrierFrequency": 432,
       "beatFrequency": null,
       "intendedEffect": null,
@@ -587,7 +778,11 @@
       "source": "Calamassi & Pomponi and subsequent reviews",
       "publicationYear": 2019,
       "doi": null,
-      "tags": ["432", "tuning", "alternative"]
+      "tags": [
+        "432",
+        "tuning",
+        "alternative"
+      ]
     }
   ]
 }
