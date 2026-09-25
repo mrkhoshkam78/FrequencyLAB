@@ -109,6 +109,10 @@ window.I18N = {
       ev_traditional: 'Traditional / Spiritual',
       cat_label_sci: 'Scientific',
       cat_label_mys: 'Mystical',
+      year: 'Year',
+      study_type: 'Type',
+      study_sample: 'Sample',
+      study_results: 'Results',
 
     },
     fa: {
@@ -215,6 +219,10 @@ window.I18N = {
       ev_traditional: 'سنتی / معنوی',
       cat_label_sci: 'علمی',
       cat_label_mys: 'عرفانی',
+      year: 'سال',
+      study_type: 'نوع',
+      study_sample: 'نمونه',
+      study_results: 'نتایج',
 
     }
   },

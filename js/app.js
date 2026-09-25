@@ -196,13 +196,13 @@
         (f.claimedEffect || f.claimedEffectFa ? '<div class="detail-section"><h3>' + I18N.get('spiritual_claim') + '</h3><div class="claim-box">⚠️ ' + escapeHtml((I18N.lang==='fa' && f.claimedEffectFa) ? f.claimedEffectFa : (f.claimedEffect||'')) +
           '<br><small style="opacity:0.8">' + I18N.get('claim_note') + '</small></div></div>' : '') +
         '<div class="detail-section"><h3>' + I18N.get('human_ev') + '</h3><p>' + escapeHtml((I18N.lang==='fa' && f.humanEvidenceFa) ? f.humanEvidenceFa : (f.humanEvidence||'—')) + '</p></div>' +
-        '<div class="detail-section"><h3>' + I18N.get('study_info') + '</h3><p><strong>Type:</strong> ' + escapeHtml(f.studyType || '—') +
-          '<br><strong>Sample:</strong> ' + escapeHtml(String(f.sampleSize || '—')) +
-          '<br><strong>Results:</strong> ' + escapeHtml((I18N.lang==='fa' && f.resultsFa) ? f.resultsFa : (f.results||'—')) + '</p></div>' +
+        '<div class="detail-section"><h3>' + I18N.get('study_info') + '</h3><p><strong>' + I18N.get('study_type') + ':</strong> ' + escapeHtml(f.studyType || '—') +
+          '<br><strong>' + I18N.get('study_sample') + ':</strong> ' + escapeHtml(String(f.sampleSize || '—')) +
+          '<br><strong>' + I18N.get('study_results') + ':</strong> ' + escapeHtml((I18N.lang==='fa' && f.resultsFa) ? f.resultsFa : (f.results||'—')) + '</p></div>' +
         '<div class="detail-section"><h3>' + I18N.get('safety_label') + '</h3><p>' + escapeHtml((I18N.lang==='fa' && f.safetyNotesFa) ? f.safetyNotesFa : (f.safetyNotes||'')) + '</p></div>' +
         '<div class="detail-section"><h3>' + I18N.get('source_label') + '</h3><p>' + escapeHtml(f.source || '—') +
           (f.doi ? '<br>DOI: ' + escapeHtml(f.doi) : '') +
-          (f.publicationYear ? '<br>Year: ' + f.publicationYear : '') + '</p></div>' +
+          (f.publicationYear ? '<br>' + I18N.get('year') + ': ' + f.publicationYear : '') + '</p></div>' +
       '</div>' +
       '<div class="detail-player">' +
         '<div class="viz-box"><canvas id="detail-wave"></canvas></div>' +
