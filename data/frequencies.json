@@ -1,8 +1,8 @@
 {
   "meta": {
     "title": "Frequency Lab Dataset",
-    "version": "2.1.0",
-    "description": "Structured research database based on standard EEG frequency bands (Delta 0.5–4, Theta 4–8, Alpha 8–13, Beta 13–30, Gamma 30–100 Hz) and common traditional/Solfeggio tones. Scientific claims are separated from traditional claims.",
+    "version": "2.2.0",
+    "description": "Structured research database based on standard EEG bands (Delta 0.5–4, Theta 4–8, Alpha 8–13, Beta 13–30, Gamma 30–100 Hz; SMR ~12–15 Hz) and traditional Solfeggio/chakra associations. Scientific vs traditional claims are separated.",
     "lastUpdated": "2026-09-25",
     "standardReference": "Common EEG band conventions (AASM / clinical EEG literature). Band edges vary slightly by source (±1 Hz).",
     "disclaimer": "Educational use only. Not medical treatment."
@@ -100,13 +100,15 @@
       "evidenceLevel": "limited",
       "safetyNotes": "Keep volume low. Not a medical sleep treatment.",
       "safetyNotesFa": "صدا را کم نگه دارید. جایگزین درمان پزشکی خواب نیست.",
-      "source": "Standard EEG bands (clinical EEG / AASM-related conventions)",
+      "source": "Clinical EEG band conventions; AASM sleep staging context (delta/slow-wave activity in N3)",
       "publicationYear": null,
       "doi": null,
       "tags": [
         "sleep",
         "delta",
-        "deep sleep"
+        "deep-sleep",
+        "nrem",
+        "0.5-4hz"
       ]
     },
     {
@@ -138,14 +140,15 @@
       "evidenceLevel": "limited",
       "safetyNotes": "May cause drowsiness. Avoid while driving.",
       "safetyNotesFa": "ممکن است خواب‌آلودگی ایجاد کند. هنگام رانندگی استفاده نکنید.",
-      "source": "EEG literature; binaural-beat reviews",
+      "source": "EEG theta band; Chockboondee et al. Sci Rep 2024 (6 Hz binaural pilot); binaural-beat reviews",
       "publicationYear": 2024,
       "doi": "10.1038/s41598-024-68628-9",
       "tags": [
         "theta",
         "meditation",
         "memory",
-        "relaxation"
+        "4-8hz",
+        "binaural"
       ]
     },
     {
@@ -178,92 +181,14 @@
       "evidenceLevel": "moderate",
       "safetyNotes": "Generally safe at moderate volume.",
       "safetyNotesFa": "در حجم صدای متوسط معمولاً ایمن است.",
-      "source": "Standard EEG classification",
+      "source": "Standard posterior alpha rhythm (~8–13 Hz) in eyes-closed EEG",
       "publicationYear": null,
       "doi": null,
       "tags": [
         "alpha",
         "relaxation",
-        "calm",
-        "stress"
-      ]
-    },
-    {
-      "id": "beta-15hz",
-      "name": "Beta 15 Hz — Active Focus",
-      "nameFa": "بتا ۱۵ هرتز — تمرکز فعال",
-      "hz": 15,
-      "hzRange": "13–30",
-      "unit": "Hz",
-      "category": "scientific",
-      "frequencyType": "Brainwave Band",
-      "frequencyTypeFa": "باند موج مغزی",
-      "brainwaveBand": "Beta",
-      "audioMethod": [
-        "Binaural Beat",
-        "Isochronic Tone"
-      ],
-      "carrierFrequency": 250,
-      "beatFrequency": 15,
-      "intendedEffect": "Associated with active thinking, concentration, and task engagement. Higher beta can relate to tension in some contexts.",
-      "intendedEffectFa": "با تفکر فعال، تمرکز و درگیری با تکلیف مرتبط است. بتای بالاتر در برخی شرایط با تنش همراه می‌شود.",
-      "claimedEffect": null,
-      "humanEvidence": "Beta is the dominant wake EEG during cognitive effort. Binaural studies targeting beta show inconsistent cognitive-enhancement results.",
-      "humanEvidenceFa": "بتا باند غالب بیداری هنگام تلاش شناختی است. مطالعات بینورال روی بتا نتایج ناهمگونی برای تقویت شناخت نشان داده‌اند.",
-      "studyType": "EEG + cognitive tasks",
-      "sampleSize": "Often small",
-      "results": "Clear endogenous link; causal benefit of external beta audio remains limited.",
-      "resultsFa": "پیوند درون‌زاد روشن است؛ سود علّی صدای بتای بیرونی هنوز محدود است.",
-      "evidenceLevel": "limited",
-      "safetyNotes": "May increase alertness or, in some people, tension.",
-      "safetyNotesFa": "ممکن است هوشیاری یا در برخی افراد تنش را افزایش دهد.",
-      "source": "EEG literature",
-      "publicationYear": null,
-      "doi": null,
-      "tags": [
-        "beta",
-        "focus",
-        "attention",
-        "cognition"
-      ]
-    },
-    {
-      "id": "gamma-40hz",
-      "name": "Gamma 40 Hz — Sensory Stimulation Research",
-      "nameFa": "گاما ۴۰ هرتز — پژوهش تحریک حسی",
-      "hz": 40,
-      "hzRange": "30–100",
-      "unit": "Hz",
-      "category": "scientific",
-      "frequencyType": "Brainwave Band / Sensory Stimulation",
-      "frequencyTypeFa": "باند موج مغزی / تحریک حسی",
-      "brainwaveBand": "Gamma",
-      "audioMethod": [
-        "Isochronic Tone",
-        "Auditory Click Train"
-      ],
-      "carrierFrequency": 200,
-      "beatFrequency": 40,
-      "intendedEffect": "Investigated for gamma entrainment, microglial activity, and amyloid-related pathology in AD models and early human trials (e.g. Tsai Lab / MIT line of work).",
-      "intendedEffectFa": "برای هماهنگی گاما، فعالیت میکروگلیا و آسیب‌شناسی مرتبط با آمیلوئید در مدل‌های آلزایمر و کارآزمایی‌های اولیه انسانی بررسی شده است.",
-      "claimedEffect": null,
-      "humanEvidence": "Preclinical and early clinical studies report that 40 Hz sensory stimulation can entrain gamma activity and affect pathology markers. Human trials suggest safety and preliminary signals; larger confirmatory trials are ongoing. Not an approved treatment.",
-      "humanEvidenceFa": "مطالعات پیش‌بالینی و بالینی اولیه نشان می‌دهند تحریک حسی ۴۰ هرتز می‌تواند فعالیت گاما را همگام کند و روی نشانگرهای آسیب اثر بگذارد. کارآزمایی‌های انسانی ایمنی و نشانه‌های اولیه را گزارش کرده‌اند؛ مطالعات بزرگ‌تر در جریان است. درمان تأییدشده نیست.",
-      "studyType": "Animal models + early-phase human trials",
-      "sampleSize": "Mouse large; human still relatively small",
-      "results": "Promising early signals; not established clinical therapy.",
-      "resultsFa": "نشانه‌های اولیه امیدوارکننده؛ هنوز درمان بالینی تثبیت‌شده نیست.",
-      "evidenceLevel": "preliminary",
-      "safetyNotes": "Moderate intensity generally well tolerated in published trials. Not medical therapy.",
-      "safetyNotesFa": "شدت متوسط در کارآزمایی‌های منتشرشده معمولاً تحمل‌پذیر بوده است. درمان پزشکی نیست.",
-      "source": "Murdock et al. Nature 2024; Tsai Lab publications",
-      "publicationYear": 2024,
-      "doi": "10.1038/s41586-024-07132-6",
-      "tags": [
-        "gamma",
-        "40hz",
-        "alzheimer",
-        "cognition"
+        "8-13hz",
+        "calm"
       ]
     },
     {
@@ -300,9 +225,49 @@
       "doi": null,
       "tags": [
         "smr",
+        "sensorimotor",
+        "12-15hz",
         "focus",
-        "attention",
-        "low beta"
+        "neurofeedback-context"
+      ]
+    },
+    {
+      "id": "beta-15hz",
+      "name": "Beta 15 Hz — Low/Mid Beta Focus",
+      "nameFa": "بتا ۱۵ هرتز — تمرکز بتا پایین/میانی",
+      "hz": 15,
+      "hzRange": "13–30 (low–mid ~13–20)",
+      "unit": "Hz",
+      "category": "scientific",
+      "frequencyType": "Brainwave Band",
+      "frequencyTypeFa": "باند موج مغزی",
+      "brainwaveBand": "Beta",
+      "audioMethod": [
+        "Binaural Beat",
+        "Isochronic Tone"
+      ],
+      "carrierFrequency": 250,
+      "beatFrequency": 15,
+      "intendedEffect": "Associated with active thinking, concentration, and task engagement. Higher beta can relate to tension in some contexts.",
+      "intendedEffectFa": "با تفکر فعال، تمرکز و درگیری با تکلیف مرتبط است. بتای بالاتر در برخی شرایط با تنش همراه می‌شود.",
+      "claimedEffect": null,
+      "humanEvidence": "Beta is the dominant wake EEG during cognitive effort. Binaural studies targeting beta show inconsistent cognitive-enhancement results.",
+      "humanEvidenceFa": "بتا باند غالب بیداری هنگام تلاش شناختی است. مطالعات بینورال روی بتا نتایج ناهمگونی برای تقویت شناخت نشان داده‌اند.",
+      "studyType": "EEG + cognitive tasks",
+      "sampleSize": "Often small",
+      "results": "Clear endogenous link; causal benefit of external beta audio remains limited.",
+      "resultsFa": "پیوند درون‌زاد روشن است؛ سود علّی صدای بتای بیرونی هنوز محدود است.",
+      "evidenceLevel": "limited",
+      "safetyNotes": "May increase alertness or, in some people, tension.",
+      "safetyNotesFa": "ممکن است هوشیاری یا در برخی افراد تنش را افزایش دهد.",
+      "source": "EEG literature",
+      "publicationYear": null,
+      "doi": null,
+      "tags": [
+        "beta",
+        "focus",
+        "13-30hz",
+        "attention"
       ]
     },
     {
@@ -339,8 +304,50 @@
       "doi": null,
       "tags": [
         "beta",
-        "focus",
+        "high-focus",
+        "16-24hz",
         "cognition"
+      ]
+    },
+    {
+      "id": "gamma-40hz",
+      "name": "Gamma 40 Hz — Sensory Entrainment Research",
+      "nameFa": "گاما ۴۰ هرتز — پژوهش همگام‌سازی حسی",
+      "hz": 40,
+      "hzRange": "30–100 (target 40)",
+      "unit": "Hz",
+      "category": "scientific",
+      "frequencyType": "Gamma / Sensory Stimulation",
+      "frequencyTypeFa": "گاما / تحریک حسی",
+      "brainwaveBand": "Gamma",
+      "audioMethod": [
+        "Isochronic Tone",
+        "Auditory Click Train"
+      ],
+      "carrierFrequency": 200,
+      "beatFrequency": 40,
+      "intendedEffect": "Noninvasive 40 Hz sensory stimulation (auditory click trains, visual flicker, or combined) has been studied for entraining cortical gamma activity and, in animal models, reducing Alzheimer-related pathology. Human work is early-phase: safety and preliminary biomarker/cognitive signals reported; not an approved treatment.",
+      "intendedEffectFa": "تحریک حسی ۴۰ هرتز (قطار کلیک شنیداری، چشمک بینایی یا ترکیبی) برای همگام‌سازی فعالیت گامای قشری و در مدل‌های حیوانی برای کاهش آسیب‌شناسی مرتبط با آلزایمر بررسی شده است. کار انسانی هنوز در فاز اولیه است: ایمنی و نشانه‌های مقدماتی گزارش شده؛ درمان تأییدشده نیست.",
+      "claimedEffect": null,
+      "humanEvidence": "MIT Tsai Lab line and follow-on studies: 40 Hz audiovisual/auditory stimulation entrains gamma in animals and shows feasibility in early human AD/MCI trials. Effect sizes and clinical endpoints remain under investigation. Classic binaural beats at a 40 Hz difference are a poor match to these protocols; pulsed/isochronic or click-train delivery is closer to published methods.",
+      "humanEvidenceFa": "خط پژوهشی آزمایشگاه Tsai در MIT و مطالعات بعدی: تحریک شنیداری/شنیداری-بینایی ۴۰ هرتز در حیوان گاما را همگام می‌کند و در کارآزمایی‌های اولیه انسانی امکان‌پذیری را نشان داده است. اندازه اثر و پیامدهای بالینی هنوز در حال بررسی است. بینورال کلاسیک با اختلاف ۴۰ هرتز با این پروتکل‌ها هم‌خوانی ضعیفی دارد؛ تحویل پالسی/ایزوکرونیک یا قطار کلیک به روش‌های منتشرشده نزدیک‌تر است.",
+      "studyType": "Animal models + early-phase human trials",
+      "sampleSize": "Large in mice; human trials still relatively small",
+      "results": "Promising preclinical signals; human evidence preliminary — not established therapy.",
+      "resultsFa": "نشانه‌های پیش‌بالینی امیدوارکننده؛ شواهد انسانی مقدماتی — درمان تثبیت‌شده نیست.",
+      "evidenceLevel": "preliminary",
+      "safetyNotes": "Published trials generally use moderate intensity. Avoid very high volume. Not a substitute for medical care. For generation in this app, prefer Isochronic mode at 40 Hz beat.",
+      "safetyNotesFa": "کارآزمایی‌های منتشرشده معمولاً شدت متوسط دارند. از صدای خیلی بلند پرهیز کنید. جایگزین مراقبت پزشکی نیست. در این برنامه برای تولید، حالت ایزوکرونیک با ضربان ۴۰ هرتز مناسب‌تر است.",
+      "source": "Murdock et al. Nature 2024; Tsai Lab / Picower Institute gamma stimulation series",
+      "publicationYear": 2024,
+      "doi": "10.1038/s41586-024-07132-6",
+      "tags": [
+        "gamma",
+        "40hz",
+        "sensory-stimulation",
+        "alzheimer-research",
+        "isochronic",
+        "click-train"
       ]
     },
     {
@@ -377,8 +384,8 @@
       "tags": [
         "binaural",
         "method",
-        "anxiety",
-        "attention"
+        "entrainment",
+        "headphones-required"
       ]
     },
     {
@@ -414,7 +421,8 @@
       "doi": null,
       "tags": [
         "monaural",
-        "method"
+        "method",
+        "amplitude-modulation"
       ]
     },
     {
@@ -488,9 +496,9 @@
       "doi": null,
       "tags": [
         "440",
-        "tuning",
-        "standard",
-        "music"
+        "iso-16",
+        "concert-pitch",
+        "tuning-standard"
       ]
     },
     {
@@ -510,8 +518,8 @@
       "carrierFrequency": 396,
       "beatFrequency": null,
       "intendedEffect": null,
-      "claimedEffect": "In spiritual literature linked to release from guilt and fear.",
-      "claimedEffectFa": "در متون معنوی با رهایی از احساس گناه و ترس پیوند داده می‌شود.",
+      "claimedEffect": "In Solfeggio/chakra traditions: linked to the Root chakra (Muladhara). Claimed benefits include feeling grounded, release of guilt and fear, and a sense of safety. These are cultural/spiritual claims, not clinical evidence.",
+      "claimedEffectFa": "در سنت سولفیجیو/چاکرا: مرتبط با چاکرای ریشه (مولادارا). فواید ادعا‌شده شامل احساس زمین‌گیر بودن، رهایی از گناه و ترس، و حس امنیت است. این‌ها ادعاهای فرهنگی/معنوی‌اند، نه شواهد بالینی.",
       "humanEvidence": "No rigorous clinical evidence for unique effects of 396 Hz. Modern Solfeggio Hz values stem from 20th-century numerology, not documented ancient tuning.",
       "humanEvidenceFa": "شواهد بالینی سخت‌گیرانه برای اثر ویژه ۳۹۶ هرتز وجود ندارد. اعداد سولفیجیوی امروزی از عددی‌نگاری قرن بیستم آمده‌اند، نه کوک باستانی مستند.",
       "studyType": "None specific",
@@ -527,8 +535,12 @@
       "tags": [
         "solfeggio",
         "396",
+        "root-chakra",
+        "muladhara",
         "spiritual"
-      ]
+      ],
+      "chakra": "Root (Muladhara)",
+      "chakraFa": "چاکرای ریشه (مولادارا)"
     },
     {
       "id": "solfeggio-417",
@@ -547,8 +559,8 @@
       "carrierFrequency": 417,
       "beatFrequency": null,
       "intendedEffect": null,
-      "claimedEffect": "Spiritual sources associate it with facilitating change.",
-      "claimedEffectFa": "منابع معنوی آن را با تسهیل تغییر مرتبط می‌دانند.",
+      "claimedEffect": "In Solfeggio/chakra traditions: linked to the Sacral chakra (Svadhisthana). Claimed benefits include facilitating change, undoing situations, and emotional flow. Cultural/spiritual claims only.",
+      "claimedEffectFa": "در سنت سولفیجیو/چاکرا: مرتبط با چاکرای خاجی (سوادیشتهانا). فواید ادعا‌شده شامل تسهیل تغییر، باز کردن گره‌های موقعیتی، و جریان احساسی است. فقط ادعای فرهنگی/معنوی.",
       "humanEvidence": "No controlled evidence for unique effects.",
       "humanEvidenceFa": "شواهد کنترل‌شده برای اثر ویژه وجود ندارد.",
       "studyType": "None",
@@ -563,8 +575,13 @@
       "doi": null,
       "tags": [
         "solfeggio",
-        "417"
-      ]
+        "417",
+        "sacral-chakra",
+        "svadhisthana",
+        "spiritual"
+      ],
+      "chakra": "Sacral (Svadhisthana)",
+      "chakraFa": "چاکرای خاجی (سوادیشتهانا)"
     },
     {
       "id": "solfeggio-528",
@@ -583,8 +600,8 @@
       "carrierFrequency": 528,
       "beatFrequency": null,
       "intendedEffect": null,
-      "claimedEffect": "Widely claimed to repair DNA and promote transformation. Extraordinary claims lack scientific support.",
-      "claimedEffectFa": "ادعای رایج ترمیم DNA و تحول شخصی. ادعاهای خارق‌العاده پشتوانه علمی ندارند.",
+      "claimedEffect": "In Solfeggio/chakra traditions: often linked to the Solar Plexus chakra (Manipura) and called a “love/transformation” tone. Claimed benefits include transformation, harmony, and (unsupported) DNA repair. A small human pilot reported short-term stress-marker changes; DNA-repair claims are not scientifically established.",
+      "claimedEffectFa": "در سنت سولفیجیو/چاکرا: اغلب با چاکرای شبکه خورشیدی (مانیپورا) و «تون عشق/تحول» پیوند داده می‌شود. فواید ادعا‌شده شامل تحول، هماهنگی و (بدون پشتوانه) ترمیم DNA است. یک پایلوت کوچک انسانی تغییر کوتاه‌مدت نشانگرهای استرس گزارش کرد؛ ادعای ترمیم DNA از نظر علمی تثبیت نشده است.",
       "humanEvidence": "One small 2018 pilot (n=9) reported lower cortisol after 528 Hz music vs 440 Hz. Animal/in-vitro work does not establish human DNA repair by audible sound. Reviews rate evidence limited/low-quality.",
       "humanEvidenceFa": "یک پایلوت کوچک ۲۰۱۸ (۹ نفر) کاهش کورتیزول پس از موسیقی ۵۲۸ نسبت به ۴۴۰ گزارش کرد. کار حیوانی/آزمایشگاهی ترمیم DNA انسان با صدای شنیدنی را ثابت نمی‌کند. مرورها شواهد را محدود و کم‌کیفیت می‌دانند.",
       "studyType": "Small pilot + animal/in-vitro",
@@ -600,8 +617,13 @@
       "tags": [
         "solfeggio",
         "528",
-        "love frequency"
-      ]
+        "solar-plexus-chakra",
+        "manipura",
+        "love-frequency",
+        "spiritual"
+      ],
+      "chakra": "Solar Plexus (Manipura)",
+      "chakraFa": "چاکرای شبکه خورشیدی (مانیپورا)"
     },
     {
       "id": "solfeggio-639",
@@ -620,8 +642,8 @@
       "carrierFrequency": 639,
       "beatFrequency": null,
       "intendedEffect": null,
-      "claimedEffect": "Associated in spiritual texts with relationships and connection.",
-      "claimedEffectFa": "در متون معنوی با روابط و پیوند مرتبط شده است.",
+      "claimedEffect": "In Solfeggio/chakra traditions: linked to the Heart chakra (Anahata). Claimed benefits include harmonious relationships, connection, and compassion. Cultural/spiritual claims only.",
+      "claimedEffectFa": "در سنت سولفیجیو/چاکرا: مرتبط با چاکرای قلب (آناهاتا). فواید ادعا‌شده شامل روابط هماهنگ، پیوند و شفقت است. فقط ادعای فرهنگی/معنوی.",
       "humanEvidence": "No specific controlled evidence.",
       "humanEvidenceFa": "شواهد کنترل‌شده اختصاصی وجود ندارد.",
       "studyType": "None",
@@ -636,8 +658,13 @@
       "doi": null,
       "tags": [
         "solfeggio",
-        "639"
-      ]
+        "639",
+        "heart-chakra",
+        "anahata",
+        "spiritual"
+      ],
+      "chakra": "Heart (Anahata)",
+      "chakraFa": "چاکرای قلب (آناهاتا)"
     },
     {
       "id": "solfeggio-741",
@@ -656,8 +683,8 @@
       "carrierFrequency": 741,
       "beatFrequency": null,
       "intendedEffect": null,
-      "claimedEffect": "Claimed for expression and “detox” themes in spiritual sources.",
-      "claimedEffectFa": "در منابع معنوی برای بیان و مضامین «پاکسازی» ادعا شده است.",
+      "claimedEffect": "In Solfeggio/chakra traditions: linked to the Throat chakra (Vishuddha). Claimed benefits include clear expression, problem-solving, and “detox” themes. Cultural/spiritual claims only.",
+      "claimedEffectFa": "در سنت سولفیجیو/چاکرا: مرتبط با چاکرای گلو (ویشودها). فواید ادعا‌شده شامل بیان روشن، حل مسئله و مضامین «پاکسازی» است. فقط ادعای فرهنگی/معنوی.",
       "humanEvidence": "No rigorous frequency-specific evidence.",
       "humanEvidenceFa": "شواهد سخت‌گیرانه ویژه این فرکانس وجود ندارد.",
       "studyType": "None",
@@ -672,8 +699,13 @@
       "doi": null,
       "tags": [
         "solfeggio",
-        "741"
-      ]
+        "741",
+        "throat-chakra",
+        "vishuddha",
+        "spiritual"
+      ],
+      "chakra": "Throat (Vishuddha)",
+      "chakraFa": "چاکرای گلو (ویشودها)"
     },
     {
       "id": "solfeggio-852",
@@ -692,8 +724,8 @@
       "carrierFrequency": 852,
       "beatFrequency": null,
       "intendedEffect": null,
-      "claimedEffect": "Linked in spiritual literature to intuition.",
-      "claimedEffectFa": "در ادبیات معنوی با شهود پیوند داده شده است.",
+      "claimedEffect": "In Solfeggio/chakra traditions: linked to the Third Eye chakra (Ajna). Claimed benefits include intuition and inner awareness. Cultural/spiritual claims only.",
+      "claimedEffectFa": "در سنت سولفیجیو/چاکرا: مرتبط با چاکرای چشم سوم (آجنا). فواید ادعا‌شده شامل شهود و آگاهی درونی است. فقط ادعای فرهنگی/معنوی.",
       "humanEvidence": "No controlled evidence of unique effects.",
       "humanEvidenceFa": "شواهد کنترل‌شده برای اثر ویژه وجود ندارد.",
       "studyType": "None",
@@ -708,8 +740,13 @@
       "doi": null,
       "tags": [
         "solfeggio",
-        "852"
-      ]
+        "852",
+        "third-eye-chakra",
+        "ajna",
+        "spiritual"
+      ],
+      "chakra": "Third Eye (Ajna)",
+      "chakraFa": "چاکرای چشم سوم (آجنا)"
     },
     {
       "id": "solfeggio-963",
@@ -728,8 +765,8 @@
       "carrierFrequency": 963,
       "beatFrequency": null,
       "intendedEffect": null,
-      "claimedEffect": "Often linked to “pineal activation” or oneness in New Age texts — not scientifically established.",
-      "claimedEffectFa": "در متون نیوایج اغلب با «فعال‌سازی غده صنوبری» یا یگانگی مرتبط می‌شود — از نظر علمی تثبیت نشده است.",
+      "claimedEffect": "In Solfeggio/chakra traditions: linked to the Crown chakra (Sahasrara). Claimed benefits include spiritual connection and “oneness”; pineal-activation claims are not scientifically established.",
+      "claimedEffectFa": "در سنت سولفیجیو/چاکرا: مرتبط با چاکرای تاج (ساهاسرارا). فواید ادعا‌شده شامل اتصال معنوی و «یگانگی» است؛ ادعای فعال‌سازی غده صنوبری از نظر علمی تثبیت نشده است.",
       "humanEvidence": "No scientific evidence for pineal activation by 963 Hz audible sound.",
       "humanEvidenceFa": "شواهد علمی برای فعال‌سازی غده صنوبری با صدای شنیدنی ۹۶۳ هرتز وجود ندارد.",
       "studyType": "None",
@@ -744,8 +781,13 @@
       "doi": null,
       "tags": [
         "solfeggio",
-        "963"
-      ]
+        "963",
+        "crown-chakra",
+        "sahasrara",
+        "spiritual"
+      ],
+      "chakra": "Crown (Sahasrara)",
+      "chakraFa": "چاکرای تاج (ساهاسرارا)"
     },
     {
       "id": "432hz",
@@ -764,8 +806,8 @@
       "carrierFrequency": 432,
       "beatFrequency": null,
       "intendedEffect": null,
-      "claimedEffect": "Claimed by proponents to feel more natural or relaxing than A=440 Hz.",
-      "claimedEffectFa": "طرفداران ادعا می‌کنند نسبت به ۴۴۰ طبیعی‌تر یا آرام‌بخش‌تر است.",
+      "claimedEffect": "Alternative tuning (A4≈432 Hz instead of ISO 440). Proponents claim a more natural or relaxing feel. Not tied to a single chakra in standard Solfeggio maps. Evidence vs 440 Hz is limited and mixed.",
+      "claimedEffectFa": "کوک جایگزین (لا۴ حدود ۴۳۲ هرتز به‌جای استاندارد ۴۴۰). طرفداران حس طبیعی‌تر یا آرام‌بخش‌تر ادعا می‌کنند. در نقشه‌های رایج سولفیجیو به یک چاکرای واحد وصل نمی‌شود. شواهد در برابر ۴۴۰ محدود و مختلط است.",
       "humanEvidence": "Small trials (e.g. dental patients) report modest preference or HR changes for 432 vs 440; other studies find little difference. The 8 Hz gap is perceptually subtle. Extraordinary “cosmic harmony” claims lack robust support.",
       "humanEvidenceFa": "کارآزمایی‌های کوچک (مثلاً بیماران دندان‌پزشکی) تفاوت جزئی به نفع ۴۳۲ گزارش کرده‌اند؛ مطالعات دیگر تفاوت کمی یافته‌اند. اختلاف ۸ هرتز از نظر ادراکی ظریف است. ادعاهای «هارمونی کیهانی» پشتوانه محکمی ندارند.",
       "studyType": "Small controlled trials",
@@ -780,8 +822,9 @@
       "doi": null,
       "tags": [
         "432",
-        "tuning",
-        "alternative"
+        "alternative-tuning",
+        "spiritual",
+        "not-iso-standard"
       ]
     }
   ]
