@@ -107,6 +107,28 @@
     // re-apply select option texts
     I18N.apply();
   });
+
+  // Ambient sound cards
+  document.querySelectorAll('.ambient-card').forEach(function (card) {
+    card.addEventListener('click', async function () {
+      var kind = card.dataset.ambient;
+      document.querySelectorAll('.ambient-card').forEach(function (c) { c.classList.remove('active'); });
+      card.classList.add('active');
+      await engine.play({
+        mode: 'ambient',
+        ambient: kind,
+        volume: Math.min(+document.getElementById('volume').value / 100, 0.5),
+        fadeIn: 1.5,
+        fadeOut: 2,
+        duration: 0
+      });
+      document.getElementById('play-btn').disabled = true;
+      document.getElementById('stop-btn').disabled = false;
+      visualizer.start();
+      showToast(I18N.get('amb_playing') + ': ' + I18N.get('amb_' + kind));
+    });
+  });
+
   // Init lang
   I18N.setLang(I18N.lang);
   document.getElementById('lang-label').textContent = I18N.lang === 'fa' ? 'EN' : 'FA';
@@ -422,6 +444,7 @@
     document.getElementById('play-btn').disabled = false;
     document.getElementById('stop-btn').disabled = true;
     visualizer.stop();
+    document.querySelectorAll('.ambient-card').forEach(function (c) { c.classList.remove('active'); });
   });
 
   engine._onEnded = function () {
@@ -515,6 +538,28 @@
     t.classList.add('show');
     setTimeout(function () { t.classList.remove('show'); }, 2800);
   }
+
+
+  // Ambient sound cards
+  document.querySelectorAll('.ambient-card').forEach(function (card) {
+    card.addEventListener('click', async function () {
+      var kind = card.dataset.ambient;
+      document.querySelectorAll('.ambient-card').forEach(function (c) { c.classList.remove('active'); });
+      card.classList.add('active');
+      await engine.play({
+        mode: 'ambient',
+        ambient: kind,
+        volume: Math.min(+document.getElementById('volume').value / 100, 0.5),
+        fadeIn: 1.5,
+        fadeOut: 2,
+        duration: 0
+      });
+      document.getElementById('play-btn').disabled = true;
+      document.getElementById('stop-btn').disabled = false;
+      visualizer.start();
+      showToast(I18N.get('amb_playing') + ': ' + I18N.get('amb_' + kind));
+    });
+  });
 
   // Init
   visualizer._drawIdle();
