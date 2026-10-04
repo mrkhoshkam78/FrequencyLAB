@@ -29,6 +29,50 @@
       --md-radius-sm: 8px;
       --font: 'Vazirmatn', system-ui, sans-serif;
     }
+
+    /* Template 2: Dark Mode Premium */
+    [data-theme="dark-premium"] {
+      --md-sys-primary: #8ab4f8;
+      --md-sys-primary-hover: #aecbfa;
+      --md-sys-on-primary: #0b1c2e;
+      --md-sys-surface: #0f1115;
+      --md-sys-surface-container: #1a1d24;
+      --md-sys-surface-low: #14161c;
+      --md-sys-outline: #3c4048;
+      --md-sys-outline-variant: #2a2e36;
+      --md-sys-on-surface: #e8eaed;
+      --md-sys-on-surface-variant: #9aa0a6;
+      --md-sys-error: #f28b82;
+      --md-sys-success: #81c995;
+      --md-elevation-1: 0 1px 2px rgba(0,0,0,.45), 0 1px 3px rgba(0,0,0,.3);
+      --md-elevation-2: 0 4px 12px rgba(0,0,0,.5);
+    }
+    [data-theme="dark-premium"] body {
+      background:
+        radial-gradient(ellipse 70% 50% at 50% -20%, rgba(138,180,248,0.08), transparent 55%),
+        var(--md-sys-surface);
+    }
+    [data-theme="dark-premium"] .status.ok { background: #1e3a2f; color: var(--md-sys-success); }
+    [data-theme="dark-premium"] .status.err { background: #3c1f1c; color: var(--md-sys-error); }
+    [data-theme="dark-premium"] .status.info { background: #1a2a40; color: var(--md-sys-primary); }
+    [data-theme="dark-premium"] .preview-wrap {
+      background: #0a0c10;
+    }
+    [data-theme="dark-premium"] .canvas-scroller {
+      background: repeating-conic-gradient(#1a1d24 0% 25%, #14161c 0% 50%) 50% / 16px 16px;
+    }
+    [data-theme="dark-premium"] .dropzone:hover,
+    [data-theme="dark-premium"] .dropzone.dragover {
+      background: rgba(138, 180, 248, 0.08);
+    }
+    [data-theme="dark-premium"] .ocr-veil {
+      background: rgba(15, 17, 21, 0.88);
+    }
+    [data-theme="dark-premium"] .toast { background: #2d3139; }
+    [data-theme="dark-premium"] .settings-panel {
+      background: var(--md-sys-surface-container);
+      border-color: var(--md-sys-outline);
+    }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html { height: 100%; }
     body {
@@ -530,6 +574,89 @@
       .preview-wrap { height: 240px; }
       #resultEditor { min-height: 140px; }
     }
+  
+    /* Settings */
+    .btn-settings {
+      width: 40px; height: 40px; border-radius: 50%;
+      border: none; background: transparent;
+      color: var(--md-sys-on-surface-variant);
+      cursor: pointer; font-size: 1.2rem;
+      display: grid; place-items: center;
+    }
+    .btn-settings:hover { background: rgba(60,64,67,.08); }
+    [data-theme="dark-premium"] .btn-settings:hover { background: rgba(255,255,255,.08); }
+    .appbar-actions { display: flex; align-items: center; gap: 8px; }
+    .settings-overlay {
+      position: fixed; inset: 0; background: rgba(0,0,0,.4);
+      z-index: 200; display: none; align-items: flex-start; justify-content: center;
+      padding: 72px 16px 24px; overflow-y: auto;
+    }
+    .settings-overlay.on { display: flex; }
+    .settings-panel {
+      width: 100%; max-width: 420px;
+      background: var(--md-sys-surface-container);
+      border: 1px solid var(--md-sys-outline-variant);
+      border-radius: var(--md-radius);
+      box-shadow: var(--md-elevation-2);
+      overflow: hidden;
+      animation: panelIn .2s ease;
+    }
+    @keyframes panelIn {
+      from { opacity: 0; transform: translateY(-8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .settings-head {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 14px 16px; border-bottom: 1px solid var(--md-sys-outline-variant);
+      font-weight: 600; font-size: 1rem;
+    }
+    .settings-body { padding: 16px; display: flex; flex-direction: column; gap: 18px; }
+    .settings-section-title {
+      font-size: 0.75rem; font-weight: 600;
+      color: var(--md-sys-on-surface-variant);
+      text-transform: uppercase; letter-spacing: .02em;
+      margin-bottom: 8px;
+    }
+    .theme-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
+    }
+    .theme-card {
+      border: 2px solid var(--md-sys-outline);
+      border-radius: var(--md-radius-sm);
+      padding: 12px; cursor: pointer; text-align: center;
+      background: var(--md-sys-surface);
+      transition: border-color .15s, box-shadow .15s;
+      user-select: none;
+    }
+    .theme-card:hover { border-color: var(--md-sys-primary); }
+    .theme-card.active {
+      border-color: var(--md-sys-primary);
+      box-shadow: 0 0 0 1px var(--md-sys-primary);
+      background: rgba(26, 115, 232, 0.08);
+    }
+    [data-theme="dark-premium"] .theme-card.active {
+      background: rgba(138, 180, 248, 0.12);
+    }
+    .theme-preview {
+      height: 40px; border-radius: 6px; margin-bottom: 8px;
+      border: 1px solid var(--md-sys-outline-variant);
+    }
+    .theme-preview.material {
+      background: linear-gradient(135deg, #f8f9fa 50%, #ffffff 50%);
+    }
+    .theme-preview.dark-premium {
+      background: linear-gradient(135deg, #0f1115 50%, #1a1d24 50%);
+    }
+    .theme-card strong { display: block; font-size: 0.85rem; margin-bottom: 2px; }
+    .theme-card span { font-size: 0.72rem; color: var(--md-sys-on-surface-variant); }
+    .settings-row {
+      display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    }
+    .settings-row label { font-size: 0.875rem; color: var(--md-sys-on-surface); }
+    .settings-hint {
+      font-size: 0.75rem; color: var(--md-sys-on-surface-variant); line-height: 1.5;
+    }
+
   </style>
 </head>
 <body>
@@ -538,8 +665,60 @@
       <div class="brand-icon">📝</div>
       <span>متن‌یاب</span>
     </a>
-    <div class="chip-privacy">🔒 روی دستگاه شما</div>
+    <div class="appbar-actions">
+      <div class="chip-privacy">🔒 روی دستگاه شما</div>
+      <button type="button" class="btn-settings" id="btnSettings" title="تنظیمات" aria-label="تنظیمات">⚙</button>
+    </div>
   </header>
+
+  <div class="settings-overlay" id="settingsOverlay" role="dialog" aria-modal="true" aria-labelledby="settingsTitle">
+    <div class="settings-panel">
+      <div class="settings-head">
+        <span id="settingsTitle">تنظیمات</span>
+        <button type="button" class="btn btn-icon" id="btnSettingsClose" aria-label="بستن">✕</button>
+      </div>
+      <div class="settings-body">
+        <div>
+          <div class="settings-section-title">قالب ظاهری</div>
+          <div class="theme-grid">
+            <div class="theme-card active" data-theme-pick="material" id="themeMaterial" role="button" tabindex="0">
+              <div class="theme-preview material"></div>
+              <strong>Material Clean</strong>
+              <span>روشن · شبیه گوگل</span>
+            </div>
+            <div class="theme-card" data-theme-pick="dark-premium" id="themeDark" role="button" tabindex="0">
+              <div class="theme-preview dark-premium"></div>
+              <strong>Dark Premium</strong>
+              <span>تیره لوکس</span>
+            </div>
+          </div>
+          <p class="settings-hint" style="margin-top:10px">۲ قالب فعال — انتخاب ذخیره می‌شود.</p>
+        </div>
+        <div>
+          <div class="settings-section-title">پیش‌فرض OCR</div>
+          <div class="field" style="margin-bottom:10px">
+            <label for="setDefaultLang">زبان پیش‌فرض</label>
+            <select class="select" id="setDefaultLang">
+              <option value="fas+eng">فارسی + انگلیسی</option>
+              <option value="fas">فقط فارسی</option>
+              <option value="eng">فقط انگلیسی</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="setDefaultMode">حالت دقت پیش‌فرض</label>
+            <select class="select" id="setDefaultMode">
+              <option value="accurate">حداکثر دقت</option>
+              <option value="fast">سریع</option>
+            </select>
+          </div>
+        </div>
+        <div>
+          <div class="settings-section-title">درباره</div>
+          <p class="settings-hint">متن‌یاب · پردازش ۱۰۰٪ روی دستگاه · بدون ارسال تصویر به سرور</p>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <div class="shell">
     <div class="hero">
@@ -1063,6 +1242,79 @@
     });
     $('#resultEditor').addEventListener('input', syncControls);
     window.addEventListener('resize', () => { if (originalImage) requestAnimationFrame(alignOverlay); });
+    /* —— Settings & themes (2 templates) —— */
+    const THEME_KEY = 'matnyab_theme';
+    const LANG_KEY = 'matnyab_default_lang';
+    const MODE_KEY = 'matnyab_default_mode';
+
+    function applyTheme(name) {
+      const theme = (name === 'dark-premium') ? 'dark-premium' : 'material';
+      if (theme === 'material') document.documentElement.removeAttribute('data-theme');
+      else document.documentElement.setAttribute('data-theme', theme);
+      document.querySelectorAll('[data-theme-pick]').forEach(el => {
+        el.classList.toggle('active', el.getAttribute('data-theme-pick') === theme);
+      });
+      try { localStorage.setItem(THEME_KEY, theme); } catch (_) {}
+    }
+
+    function openSettings() {
+      $('#settingsOverlay').classList.add('on');
+      try {
+        const lang = localStorage.getItem(LANG_KEY);
+        const mode = localStorage.getItem(MODE_KEY);
+        if (lang) $('#setDefaultLang').value = lang;
+        if (mode) $('#setDefaultMode').value = mode;
+      } catch (_) {}
+    }
+    function closeSettings() { $('#settingsOverlay').classList.remove('on'); }
+
+    $('#btnSettings').onclick = openSettings;
+    $('#btnSettingsClose').onclick = closeSettings;
+    $('#settingsOverlay').addEventListener('click', (e) => {
+      if (e.target === $('#settingsOverlay')) closeSettings();
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeSettings();
+    });
+    document.querySelectorAll('[data-theme-pick]').forEach(el => {
+      el.addEventListener('click', () => {
+        applyTheme(el.getAttribute('data-theme-pick'));
+        toast('قالب اعمال شد', 'ok');
+      });
+      el.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          applyTheme(el.getAttribute('data-theme-pick'));
+        }
+      });
+    });
+    $('#setDefaultLang').addEventListener('change', () => {
+      try { localStorage.setItem(LANG_KEY, $('#setDefaultLang').value); } catch (_) {}
+      $('#langSelect').value = $('#setDefaultLang').value;
+      toast('زبان پیش‌فرض ذخیره شد', 'ok');
+    });
+    $('#setDefaultMode').addEventListener('change', () => {
+      try { localStorage.setItem(MODE_KEY, $('#setDefaultMode').value); } catch (_) {}
+      $('#modeSelect').value = $('#setDefaultMode').value;
+      toast('حالت دقت ذخیره شد', 'ok');
+    });
+
+    // restore prefs
+    try {
+      const savedTheme = localStorage.getItem(THEME_KEY);
+      if (savedTheme) applyTheme(savedTheme);
+      const lang = localStorage.getItem(LANG_KEY);
+      const mode = localStorage.getItem(MODE_KEY);
+      if (lang && $('#langSelect').querySelector('option[value="' + lang + '"]')) {
+        $('#langSelect').value = lang;
+        $('#setDefaultLang').value = lang;
+      }
+      if (mode && $('#modeSelect').querySelector('option[value="' + mode + '"]')) {
+        $('#modeSelect').value = mode;
+        $('#setDefaultMode').value = mode;
+      }
+    } catch (_) {}
+
     syncControls();
     if (location.protocol === 'file:') {
       setTimeout(function() { toast('برای بهترین عملکرد با سرور محلی باز کنید', 'err'); }, 800);
