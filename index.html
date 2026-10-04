@@ -30,48 +30,259 @@
       --font: 'Vazirmatn', system-ui, sans-serif;
     }
 
-    /* Template 2: Dark Mode Premium */
-    [data-theme="dark-premium"] {
-      --md-sys-primary: #8ab4f8;
-      --md-sys-primary-hover: #aecbfa;
-      --md-sys-on-primary: #0b1c2e;
-      --md-sys-surface: #0f1115;
-      --md-sys-surface-container: #1a1d24;
-      --md-sys-surface-low: #14161c;
-      --md-sys-outline: #3c4048;
-      --md-sys-outline-variant: #2a2e36;
-      --md-sys-on-surface: #e8eaed;
-      --md-sys-on-surface-variant: #9aa0a6;
-      --md-sys-error: #f28b82;
-      --md-sys-success: #81c995;
-      --md-elevation-1: 0 1px 2px rgba(0,0,0,.45), 0 1px 3px rgba(0,0,0,.3);
-      --md-elevation-2: 0 4px 12px rgba(0,0,0,.5);
+    /* ========== Template 2: Neubrutalism (اصول کاملاً متفاوت) ========== */
+    [data-theme="neubrutal"] {
+      --md-sys-primary: #111111;
+      --md-sys-primary-hover: #000000;
+      --md-sys-on-primary: #ffe566;
+      --md-sys-surface: #fff7e0;
+      --md-sys-surface-container: #ffffff;
+      --md-sys-surface-low: #ffe566;
+      --md-sys-outline: #111111;
+      --md-sys-outline-variant: #111111;
+      --md-sys-on-surface: #111111;
+      --md-sys-on-surface-variant: #333333;
+      --md-sys-error: #ff4d4d;
+      --md-sys-success: #00c853;
+      --md-elevation-1: 4px 4px 0 #111111;
+      --md-elevation-2: 6px 6px 0 #111111;
+      --md-radius: 0px;
+      --md-radius-sm: 0px;
     }
-    [data-theme="dark-premium"] body {
-      background:
-        radial-gradient(ellipse 70% 50% at 50% -20%, rgba(138,180,248,0.08), transparent 55%),
-        var(--md-sys-surface);
+    [data-theme="neubrutal"] body {
+      background: #fff7e0;
+      background-image:
+        linear-gradient(rgba(17,17,17,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(17,17,17,0.04) 1px, transparent 1px);
+      background-size: 24px 24px;
     }
-    [data-theme="dark-premium"] .status.ok { background: #1e3a2f; color: var(--md-sys-success); }
-    [data-theme="dark-premium"] .status.err { background: #3c1f1c; color: var(--md-sys-error); }
-    [data-theme="dark-premium"] .status.info { background: #1a2a40; color: var(--md-sys-primary); }
-    [data-theme="dark-premium"] .preview-wrap {
-      background: #0a0c10;
+    [data-theme="neubrutal"] .appbar {
+      background: #ffe566;
+      border-bottom: 3px solid #111;
+      box-shadow: 0 4px 0 #111;
+      height: 60px;
     }
-    [data-theme="dark-premium"] .canvas-scroller {
-      background: repeating-conic-gradient(#1a1d24 0% 25%, #14161c 0% 50%) 50% / 16px 16px;
+    [data-theme="neubrutal"] .brand-icon {
+      background: #111;
+      color: #ffe566;
+      border-radius: 0;
+      border: 2px solid #111;
+      box-shadow: 3px 3px 0 #ff6b6b;
     }
-    [data-theme="dark-premium"] .dropzone:hover,
-    [data-theme="dark-premium"] .dropzone.dragover {
-      background: rgba(138, 180, 248, 0.08);
+    [data-theme="neubrutal"] .chip-privacy {
+      background: #fff;
+      border: 2px solid #111;
+      border-radius: 0;
+      font-weight: 600;
+      box-shadow: 2px 2px 0 #111;
     }
-    [data-theme="dark-premium"] .ocr-veil {
-      background: rgba(15, 17, 21, 0.88);
+    [data-theme="neubrutal"] .btn-settings {
+      border: 2px solid #111;
+      border-radius: 0;
+      background: #fff;
+      color: #111;
+      box-shadow: 2px 2px 0 #111;
     }
-    [data-theme="dark-premium"] .toast { background: #2d3139; }
-    [data-theme="dark-premium"] .settings-panel {
-      background: var(--md-sys-surface-container);
-      border-color: var(--md-sys-outline);
+    [data-theme="neubrutal"] .btn-settings:hover {
+      background: #ff6b6b;
+      color: #fff;
+    }
+    [data-theme="neubrutal"] .hero h1 {
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: -0.02em;
+      font-size: clamp(1.35rem, 3.5vw, 1.85rem);
+    }
+    [data-theme="neubrutal"] .card {
+      border: 3px solid #111;
+      border-radius: 0;
+      box-shadow: 6px 6px 0 #111;
+      background: #fff;
+    }
+    [data-theme="neubrutal"] .card-header {
+      background: #ffe566;
+      border-bottom: 3px solid #111;
+    }
+    [data-theme="neubrutal"] .card-title {
+      color: #111;
+      font-weight: 700;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      letter-spacing: 0.04em;
+    }
+    [data-theme="neubrutal"] .dropzone {
+      border: 3px dashed #111;
+      border-radius: 0;
+      background: #fff7e0;
+    }
+    [data-theme="neubrutal"] .dropzone:hover,
+    [data-theme="neubrutal"] .dropzone.dragover {
+      background: #ffe566;
+      border-style: solid;
+    }
+    [data-theme="neubrutal"] .dropzone .icon {
+      background: #111;
+      color: #ffe566;
+      border-radius: 0;
+      border: 2px solid #111;
+      box-shadow: 3px 3px 0 #ff6b6b;
+    }
+    [data-theme="neubrutal"] .preview-wrap {
+      border: 3px solid #111;
+      border-radius: 0;
+      background: #e8e0c8;
+    }
+    [data-theme="neubrutal"] .canvas-scroller {
+      background: repeating-conic-gradient(#e8e0c8 0% 25%, #fff7e0 0% 50%) 50% / 16px 16px;
+    }
+    [data-theme="neubrutal"] .btn {
+      border-radius: 0 !important;
+      font-weight: 700;
+      border: 2px solid #111 !important;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      box-shadow: 3px 3px 0 #111;
+    }
+    [data-theme="neubrutal"] .btn:active:not(:disabled) {
+      box-shadow: 1px 1px 0 #111;
+      transform: translate(2px, 2px);
+    }
+    [data-theme="neubrutal"] .btn-filled {
+      background: #111;
+      color: #ffe566;
+    }
+    [data-theme="neubrutal"] .btn-filled:hover:not(:disabled) {
+      background: #ff6b6b;
+      color: #fff;
+      box-shadow: 3px 3px 0 #111;
+    }
+    [data-theme="neubrutal"] .btn-tonal {
+      background: #a0e7e5;
+      color: #111;
+    }
+    [data-theme="neubrutal"] .btn-tonal:hover:not(:disabled) {
+      background: #7dd3d1;
+    }
+    [data-theme="neubrutal"] .btn-outline,
+    [data-theme="neubrutal"] .btn-text {
+      background: #fff;
+      color: #111;
+    }
+    [data-theme="neubrutal"] .btn-outline:hover:not(:disabled),
+    [data-theme="neubrutal"] .btn-text:hover:not(:disabled) {
+      background: #ffe566;
+    }
+    [data-theme="neubrutal"] .btn-icon {
+      border-radius: 0 !important;
+      width: 40px;
+      height: 40px;
+      background: #fff;
+      color: #111;
+    }
+    [data-theme="neubrutal"] .btn-danger-text {
+      color: #c62828 !important;
+      background: #fff;
+    }
+    [data-theme="neubrutal"] .select {
+      border: 2px solid #111;
+      border-radius: 0;
+      background: #fff;
+      font-weight: 600;
+      box-shadow: 3px 3px 0 #111;
+    }
+    [data-theme="neubrutal"] .select:focus {
+      box-shadow: 3px 3px 0 #ff6b6b;
+      border-color: #111;
+    }
+    [data-theme="neubrutal"] .chip {
+      border: 2px solid #111;
+      border-radius: 0;
+      background: #fff;
+      font-weight: 600;
+      box-shadow: 2px 2px 0 #111;
+    }
+    [data-theme="neubrutal"] .chip.on {
+      background: #a0e7e5;
+      border-color: #111;
+      color: #111;
+    }
+    [data-theme="neubrutal"] #resultEditor {
+      border: 2px solid #111;
+      border-radius: 0;
+      box-shadow: 4px 4px 0 #111;
+      background: #fffef5;
+    }
+    [data-theme="neubrutal"] #resultEditor:focus {
+      box-shadow: 4px 4px 0 #ff6b6b;
+      border-color: #111;
+    }
+    [data-theme="neubrutal"] .progress-track {
+      border: 2px solid #111;
+      border-radius: 0;
+      height: 10px;
+      background: #fff;
+    }
+    [data-theme="neubrutal"] .progress-fill {
+      background: #ff6b6b;
+      border-radius: 0;
+    }
+    [data-theme="neubrutal"] .status {
+      border: 2px solid #111;
+      border-radius: 0;
+      font-weight: 600;
+      box-shadow: 3px 3px 0 #111;
+    }
+    [data-theme="neubrutal"] .status.ok { background: #b9f6ca; color: #111; }
+    [data-theme="neubrutal"] .status.err { background: #ff8a80; color: #111; }
+    [data-theme="neubrutal"] .status.info { background: #a0e7e5; color: #111; }
+    [data-theme="neubrutal"] .toast {
+      background: #111;
+      color: #ffe566;
+      border-radius: 0;
+      border: 2px solid #ffe566;
+      box-shadow: 4px 4px 0 #ff6b6b;
+      font-weight: 700;
+    }
+    [data-theme="neubrutal"] .toast.ok { background: #00c853; color: #111; border-color: #111; }
+    [data-theme="neubrutal"] .toast.err { background: #ff4d4d; color: #fff; border-color: #111; }
+    [data-theme="neubrutal"] .settings-panel {
+      border: 3px solid #111;
+      border-radius: 0;
+      box-shadow: 8px 8px 0 #111;
+    }
+    [data-theme="neubrutal"] .settings-head {
+      background: #ffe566;
+      border-bottom: 3px solid #111;
+    }
+    [data-theme="neubrutal"] .theme-card {
+      border: 2px solid #111;
+      border-radius: 0;
+      box-shadow: 3px 3px 0 #111;
+    }
+    [data-theme="neubrutal"] .theme-card.active {
+      background: #a0e7e5;
+      box-shadow: 3px 3px 0 #111;
+    }
+    [data-theme="neubrutal"] .crop-rect {
+      border: 3px solid #111;
+      background: rgba(255, 229, 102, 0.25);
+      box-shadow: 0 0 0 9999px rgba(0,0,0,.4);
+    }
+    [data-theme="neubrutal"] .c-handle {
+      background: #ffe566;
+      border: 2px solid #111;
+      border-radius: 0;
+    }
+    [data-theme="neubrutal"] .ocr-veil {
+      background: rgba(255, 247, 224, 0.92);
+    }
+    [data-theme="neubrutal"] .spinner {
+      border: 3px solid #111;
+      border-top-color: #ff6b6b;
+    }
+    [data-theme="neubrutal"] .footer {
+      font-weight: 600;
+      color: #333;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html { height: 100%; }
@@ -684,15 +895,15 @@
             <div class="theme-card active" data-theme-pick="material" id="themeMaterial" role="button" tabindex="0">
               <div class="theme-preview material"></div>
               <strong>Material Clean</strong>
-              <span>روشن · شبیه گوگل</span>
+              <span>نرم · شبیه گوگل</span>
             </div>
-            <div class="theme-card" data-theme-pick="dark-premium" id="themeDark" role="button" tabindex="0">
-              <div class="theme-preview dark-premium"></div>
-              <strong>Dark Premium</strong>
-              <span>تیره لوکس</span>
+            <div class="theme-card" data-theme-pick="neubrutal" id="themeBrutal" role="button" tabindex="0">
+              <div class="theme-preview dark-premium" style="background:linear-gradient(135deg,#ffe566 40%,#fff 40%,#fff 60%,#a0e7e5 60%);border:2px solid #111"></div>
+              <strong>Neubrutalism</strong>
+              <span>خام · بوردر ضخیم · سایه سخت</span>
             </div>
           </div>
-          <p class="settings-hint" style="margin-top:10px">۲ قالب فعال — انتخاب ذخیره می‌شود.</p>
+          <p class="settings-hint" style="margin-top:10px">۲ قالب با اصول طراحی متفاوت — انتخاب ذخیره می‌شود.</p>
         </div>
         <div>
           <div class="settings-section-title">پیش‌فرض OCR</div>
@@ -1248,7 +1459,7 @@
     const MODE_KEY = 'matnyab_default_mode';
 
     function applyTheme(name) {
-      const theme = (name === 'dark-premium') ? 'dark-premium' : 'material';
+      const theme = (name === 'neubrutal') ? 'neubrutal' : 'material';
       if (theme === 'material') document.documentElement.removeAttribute('data-theme');
       else document.documentElement.setAttribute('data-theme', theme);
       document.querySelectorAll('[data-theme-pick]').forEach(el => {
@@ -1301,7 +1512,8 @@
 
     // restore prefs
     try {
-      const savedTheme = localStorage.getItem(THEME_KEY);
+      let savedTheme = localStorage.getItem(THEME_KEY);
+      if (savedTheme === 'dark-premium') savedTheme = 'neubrutal';
       if (savedTheme) applyTheme(savedTheme);
       const lang = localStorage.getItem(LANG_KEY);
       const mode = localStorage.getItem(MODE_KEY);
